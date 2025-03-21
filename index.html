@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="GPBench is a detailed benchmark designed to rigorously evaluate large language models in general practitioner tasks.">
+  <meta name="keywords" content="Large Language Models, Benchmark, General practitioners, Competency Model">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GPBench: A Comprehensive and Fine-Grained Benchmark for Evaluating Large Language Models as General Practitioners</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">GPBench: A Comprehensive and Fine-Grained Benchmark for Evaluating Large Language Models as General Practitioners</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Zheqing Li</a><sup>1</sup>,</span>
+            <span class="author-block">
+              Yiying Yang</a><sup>2</sup>,</span>
+            <span class="author-block">
+              Jiping Lang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://cswhjiang.github.io/">Wenhao Jiang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              Yuhang Zhao</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              Shuang Li</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Dingqian Wang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              Zhu Lin</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Xuanna Li</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Yuze Tang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Jiexian Qiu</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              Xiaolin Lu</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              Hongji Yu</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              Shuang Chen</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Yuhua Bi</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Xiaofei Zeng</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Yixian Chen</a><sup>4</sup>,
+            </span>
+            <span class="author-block">
+              Junrong Chen</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Lin Yao</a><sup>1</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>The Sixth Affiliated Hospital of Sun Yat-sen University,</span>
+            <span class="author-block"><sup>2</sup> Guangdong Laboratory of Artificial Intelligence and Digital Economy (SZ),</span>
+            <span class="author-block"><sup>2</sup> Xinyi People’s Hospital,</span>
+            <span class="author-block"><sup>2</sup> School of Intelligent Systems Engineering, Sun Yat-sen University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://www.google.com/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://www.google.com/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://www.google.com/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://www.google.com/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero overview">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="title is-2 has-text-centered">What is GPBench?</h2>
+      <p class="description" style = "font-size: 1.25rem; text-align: justify;">GPBench is the first LLM medical evaluation framework for the work scenarios of general practitioners (GPs). It realizes the systematic assessment of LLM’s general practice capabilities for the first time, and provides a standardized paradigm for the evaluation of the practical application of medical AI in GPs. GPBench is built around three core operational scenarios: clinical knowledge application, systematic analysis of medical records, and dynamic outpatient interactions. Correspondingly, it comprises three specialized test sets: the <b>MCQ Test Set</b>, the <b>Clinical Case Test Set</b>, and the <b>AI Patient Test Set</b>.</p>
+      <div style="height: 30px;"></div>
+      <figure>
+        <img id="overview" src="./static/images/fig1_overview.png" alt="overview" style="height: 100%;">
+        <figcaption style="text-align: justify;">
+          <strong>An overview of GPBench.</strong> For dataset construction, we compile multiple-choice questions
+          from open-source datasets and real outpatient medical records from Tertiary A-grade hospitals to
+          create three test sets: MCQ Test Set, Clinical Case Test Set, and AI Patient Test. Ground truth
+          and scoring criteria for each case are annotated in details by experts. For evaluation, the GPBench
+          framework innovatively employs the classic competency model of general practitioners to assess
+          LLMs. Accuracy is used as the evaluation metric for the first test set, while for the other two test sets,
+          experts grade responses based on the annotated scoring criteria.
+        </figcaption>
+      </figure>
+    
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-2">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            General practitioners (GPs) serve as the cornerstone of primary healthcare systems
+            by providing continuous and comprehensive medical services. However, due to
+            community-oriented nature of their practice, uneven training and resource gaps,
+            the clinical proficiency among GPs can vary significantly across regions and
+            healthcare settings. Currently, Large Language Models (LLMs) have demonstrated
+            great potential in clinical and medical applications, making them a promising
+            tool for supporting general practice. However, most existing benchmarks and
+            evaluation frameworks focus on exam-style assessments—typically multiple-choice
+            question—lack comprehensive assessment sets that accurately mirror the real-
+            world scenarios encountered by GPs. To evaluate how effectively LLMs can make
+            decisions in the daily work of GPs, we designed GPBench, which consists of
+            both test questions from clinical practice and a novel evaluation framework. The
+            test set includes multiple-choice questions that assess fundamental knowledge of
+            general practice, as well as realistic, scenario-based problems. All questions are
+            meticulously annotated by experts, incorporating rich fine-grained information
+            related to clinical management. The proposed LLM evaluation framework is
+            based on the competency model for general practice, providing a comprehensive
+            methodology for assessing LLM performance in real-world settings. As the first
+            large-model evaluation set targeting GP decision-making scenarios, GPBench
+            allows us to evaluate current mainstream LLMs. Expert assessment and evaluation
+            reveal that in areas such as disease staging, complication recognition, treatment
+            detail, and medication usage, these models exhibit at least ten major shortcomings.
+            Overall, existing LLMs are not yet suitable for independent use in real-world GP
+            working scenarios without human oversight.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="column is-centered">
+      <div class="column is-full">
+        <h2 class="title is-2 has has-text-centered">Results</h2>
+        <div class="content has-text-centered">
+          <p style="font-size: 1.25rem;">
+            The accuracies (%) of LLMs on the <strong>MCQ Test Set</strong> across the secondary competency indicators.
+          </p>
+        <div style="border-collapse: collapse; border-top: 2px solid black; border-bottom: 2px solid black; overflow: auto;">
+          <table style="width: 100%; white-space: nowrap;">
+            <thead>
+                <tr>
+                    <th>Primary Indicator</th>
+                    <th>Secondary Indicator</th>
+                    <th>Qwen2.5-7B</th>
+                    <th>Qwen2.5-72B</th>
+                    <th>GPT-4o</th>
+                    <th>GPT-4-turbo</th>
+                    <th>o1-preview</th>
+                    <th>Claude-3.5-sonnet</th>
+                    <th>Gemini-1.5-pro</th>
+                    <th>HuatuoGPT-o1-7B</th>
+                    <th>DeepSeek-V3</th>
+                    <th>DeepSeek-R1</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Basic Medical Knowledge (15%)</strong></td>
+                    <td>Basic Medical Knowledge</td>
+                    <td>64.48</td>
+                    <td>76.60</td>
+                    <td>68.83</td>
+                    <td>54.53</td>
+                    <td>80.01</td>
+                    <td>53.73</td>
+                    <td>64.98</td>
+                    <td>70.59</td>
+                    <td>71.86</td>
+                    <td>82.44</td>
+                </tr>
+                <tr>
+                    <td rowspan="5"><strong>Diagnosis (30%)</strong></td>
+                    <td>Diagnosis and Differential Diagnosis Capability</td>
+                    <td>68.90</td>
+                    <td>79.80</td>
+                    <td>74.36</td>
+                    <td>60.86</td>
+                    <td>82.18</td>
+                    <td>59.36</td>
+                    <td>68.80</td>
+                    <td>74.28</td>
+                    <td>77.00</td>
+                    <td>85.38</td>
+                </tr>
+                <tr>
+                    <td>Medical History Taking Proficiency</td>
+                    <td>71.82</td>
+                    <td>79.82</td>
+                    <td>77.45</td>
+                    <td>59.27</td>
+                    <td>85.45</td>
+                    <td>61.09</td>
+                    <td>68.55</td>
+                    <td>74.18</td>
+                    <td>80.00</td>
+                    <td>85.82</td>
+                </tr>
+                <tr>
+                    
+                    <td>Complication Identification Skill</td>
+                    <td>65.95</td>
+                    <td>80.83</td>
+                    <td>73.39</td>
+                    <td>62.66</td>
+                    <td>83.12</td>
+                    <td>55.65</td>
+                    <td>69.38</td>
+                    <td>73.24</td>
+                    <td>78.97</td>
+                    <td>89.27</td>
+                </tr>
+                <tr>
+            
+                    <td>Acute and Critical Condition Recognition</td>
+                    <td>77.68</td>
+                    <td>82.90</td>
+                    <td>82.32</td>
+                    <td>63.77</td>
+                    <td>86.38</td>
+                    <td>59.13</td>
+                    <td>69.28</td>
+                    <td>82.03</td>
+                    <td>82.03</td>
+                    <td>87.54</td>
+                </tr>
+                <tr>
+                    
+                    <td>Referral Decision-making Competence</td>
+                    <td>65.82</td>
+                    <td>70.89</td>
+                    <td>64.56</td>
+                    <td>72.15</td>
+                    <td>62.03</td>
+                    <td>72.78</td>
+                    <td>73.42</td>
+                    <td>60.51</td>
+                    <td>68.35</td>
+                    <td>61.39</td>
+                </tr>
+                <tr>
+                    <td rowspan="4"><strong>Decision-making (35%)</strong></td>
+                    <td>Formulation of Optimal Treatment Plan</td>
+                    <td>68.35</td>
+                    <td>76.88</td>
+                    <td>65.35</td>
+                    <td>51.75</td>
+                    <td>74.62</td>
+                    <td>50.65</td>
+                    <td>61.10</td>
+                    <td>72.12</td>
+                    <td>73.88</td>
+                    <td>82.58</td>
+                </tr>
+                <tr>
+                    
+                    <td>Adverse Drug Reaction Management</td>
+                    <td>66.86</td>
+                    <td>77.71</td>
+                    <td>69.71</td>
+                    <td>58.86</td>
+                    <td>75.43</td>
+                    <td>48.57</td>
+                    <td>63.43</td>
+                    <td>75.43</td>
+                    <td>74.86</td>
+                    <td>80.57</td>
+                </tr>
+                <tr>
+                    
+                    <td>Contraindications Awareness</td>
+                    <td>59.31</td>
+                    <td>74.83</td>
+                    <td>69.66</td>
+                    <td>46.55</td>
+                    <td>81.38</td>
+                    <td>48.97</td>
+                    <td>64.48</td>
+                    <td>67.59</td>
+                    <td>76.55</td>
+                    <td>82.76</td>
+                </tr>
+                <tr>
+                    
+                    <td>Alternative Therapy Selection Capacity</td>
+                    <td>64.12</td>
+                    <td>74.12</td>
+                    <td>63.53</td>
+                    <td>54.71</td>
+                    <td>72.35</td>
+                    <td>50.00</td>
+                    <td>60.00</td>
+                    <td>66.67</td>
+                    <td>71.18</td>
+                    <td>79.12</td>
+                </tr>
+                <tr>
+                    <td rowspan="4"><strong>Health management (10%)</strong></td>
+                    <td>Health Education Delivery Expertise</td>
+                    <td>74.34</td>
+                    <td>78.11</td>
+                    <td>77.36</td>
+                    <td>72.08</td>
+                    <td>86.04</td>
+                    <td>68.68</td>
+                    <td>76.23</td>
+                    <td>76.89</td>
+                    <td>76.60</td>
+                    <td>84.53</td>
+                </tr>
+                <tr>
+                    
+                    <td>Tertiary Prevention Implementation</td>
+                    <td>79.29</td>
+                    <td>81.07</td>
+                    <td>72.86</td>
+                    <td>67.14</td>
+                    <td>86.07</td>
+                    <td>57.50</td>
+                    <td>73.21</td>
+                    <td>83.57</td>
+                    <td>76.07</td>
+                    <td>89.64</td>
+                </tr>
+                <tr>
+                    
+                    <td>Patient Compliance Improvement</td>
+                    <td>60.34</td>
+                    <td>71.55</td>
+                    <td>82.76</td>
+                    <td>55.17</td>
+                    <td>92.24</td>
+                    <td>47.41</td>
+                    <td>45.69</td>
+                    <td>63.30</td>
+                    <td>75.00</td>
+                    <td>69.83</td>
+                </tr>
+                <tr>
+                    
+                    <td>Family Support Provision Ability</td>
+                    <td>66.41</td>
+                    <td>80.92</td>
+                    <td>80.15</td>
+                    <td>51.91</td>
+                    <td>84.73</td>
+                    <td>61.83</td>
+                    <td>55.73</td>
+                    <td>66.67</td>
+                    <td>61.07</td>
+                    <td>73.28</td>
+                </tr>
+                <tr>
+                    <td rowspan="1"><strong>Health Economics (5%)</strong></td>
+                    <td>Cost-effective Care Coordination</td>
+                    <td>79.00</td>
+                    <td>84.00</td>
+                    <td>76.00</td>
+                    <td>74.00</td>
+                    <td>80.00</td>
+                    <td>71.00</td>
+                    <td>73.00</td>
+                    <td>81.82</td>
+                    <td>80.00</td>
+                    <td>89.00</td>
+                </tr>
+                <tr>
+                    <td rowspan="1"><strong>Medical Ethics and Humanities (5%)</strong></td>
+                    <td>Humanistic Care Competency</td>
+                    <td>80.14</td>
+                    <td>78.49</td>
+                    <td>73.29</td>
+                    <td>67.61</td>
+                    <td>75.41</td>
+                    <td>67.38</td>
+                    <td>78.72</td>
+                    <td>86.76</td>
+                    <td>75.18</td>
+                    <td>82.03</td>
+                </tr>
+                <tr style="border-top: 2px solid black;">
+                  <td colspan="2"><strong>Weighted accuracy</strong></td>
+                  <td>68.76</td>
+                  <td>77.65</td>
+                  <td>71.02</td>
+                  <td>59.83</td>
+                  <td>79.72</td>
+                  <td>48.33</td>
+                  <td>66.22</td>
+                  <td>74.49</td>
+                  <td>75.40</td>
+                  <td>83.61</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        </div>
+        
+        <div style="height: 30px;"></div>
+
+        <div class="content has-text-centered">
+          <p style="font-size: 1.25rem;">
+            The performance (scores) of LLMs on the <strong>Clinical Case Test Set</strong> across the indicators.
+          </p>
+          <div style="border-collapse: collapse; border-top: 2px solid black; border-bottom: 2px solid black; overflow: auto;">
+            <table>
+              <thead>
+                  <tr style="border-bottom: 2px solid black;">
+                      <th>Model</th>
+                      <th>Diagnosis and Differential Diagnosis Capability (Weighted)</th>
+                      <th>Competency in Clinical Appropriateness Evaluation of Diagnostic Examinations</th>
+                      <th>Diagnosis and Differential Diagnosis Capability</th>
+                      <th>Referral Decision-making Competence</th>
+                      <th>Acute and Critical Condition Recognition</th>
+                      <th>Complication Identification Skill</th>
+                      <th>Formulation of Optimal Treatment Plan</th>
+                      <th>Health Education Delivery Expertise</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>Qwen2.5-7B-Instruct</strong></td>
+                      <td>63.93 </td>
+                      <td>66.15 </td>
+                      <td>63.38 </td>
+                      <td>76.63 </td>
+                      <td>80.34 </td>
+                      <td>61.38 </td>
+                      <td>47.26 </td>
+                      <td>82.75 </td>
+                  </tr>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>Qwen2.5-72B-Instruct</strong></td>
+                      <td>68.44 </td>
+                      <td>72.09 </td>
+                      <td>67.53 </td>
+                      <td>74.63 </td>
+                      <td>87.84 </td>
+                      <td>60.40 </td>
+                      <td>60.88 </td>
+                      <td>87.92 </td>
+                  </tr>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>GPT-4o</strong></td>
+                      <td>69.57 </td>
+                      <td>67.23 </td>
+                      <td>70.15 </td>
+                      <td>81.84 </td>
+                      <td>87.09 </td>
+                      <td>73.84 </td>
+                      <td>61.62 </td>
+                      <td>85.42 </td>
+                  </tr>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>GPT-4-turbo</strong></td>
+                      <td>62.51 </td>
+                      <td>64.34 </td>
+                      <td>62.05 </td>
+                      <td>79.38 </td>
+                      <td>84.34 </td>
+                      <td>67.71 </td>
+                      <td>55.82 </td>
+                      <td>81.92 </td>
+                  </tr>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>Claude-3.5-sonnet</strong></td>
+                      <td>68.13 </td>
+                      <td>65.21 </td>
+                      <td>68.86 </td>
+                      <td>77.46 </td>
+                      <td>85.42 </td>
+                      <td>73.67 </td>
+                      <td>58.03 </td>
+                      <td>79.92 </td>
+                  </tr>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>Gemini-1.5-pro</strong></td>
+                      <td>74.04 </td>
+                      <td>65.03 </td>
+                      <td>76.29 </td>
+                      <td>78.96 </td>
+                      <td>85.42 </td>
+                      <td>73.34 </td>
+                      <td>68.32 </td>
+                      <td>88.00 </td>
+                  </tr>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>DeepSeek-V3</strong></td>
+                      <td>60.54 </td>
+                      <td>55.00 </td>
+                      <td>61.92 </td>
+                      <td>75.17 </td>
+                      <td>83.96 </td>
+                      <td>69.63 </td>
+                      <td>63.92 </td>
+                      <td>84.17 </td>
+                  </tr>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>DeepSeek-R1</strong></td>
+                      <td>78.21 </td>
+                      <td>74.78 </td>
+                      <td>79.07 </td>
+                      <td>80.62 </td>
+                      <td>93.96 </td>
+                      <td>76.29 </td>
+                      <td>77.88 </td>
+                      <td>88.04 </td>
+                  </tr>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>HuatuoGPT-o1-7B</strong></td>
+                      <td>53.41 </td>
+                      <td>59.38 </td>
+                      <td>51.92 </td>
+                      <td>72.92 </td>
+                      <td>87.50 </td>
+                      <td>70.09 </td>
+                      <td>58.69 </td>
+                      <td>89.50 </td>
+                  </tr>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>o1-preview</strong></td>
+                      <td>67.10 </td>
+                      <td>65.57 </td>
+                      <td>67.48 </td>
+                      <td>85.84 </td>
+                      <td>86.25 </td>
+                      <td>69.84 </td>
+                      <td>57.69 </td>
+                      <td>85.59</td>
+                  </tr>
+              </tbody>
+          </table>
+          </div>
+
+
+        </div>
+
+        <div style="height: 30px;"></div>
+
+        <div class="content has-text-centered">
+          <p style="font-size: 1.25rem;">
+            The performance (scores) of LLMs on the <strong>AI Patient Test Set</strong> across the indicators.
+          </p>
+          <div style="border-collapse: collapse; border-top: 2px solid black; border-bottom: 2px solid black; overflow: auto;">
+            <table>
+              <thead>
+                  <tr style="border-bottom: 2px solid black;">
+                      <th>Model</th>
+                      <td>Diagnosis and Differential Diagnosis Capability (Weighted)</td>
+                      <td>Competency in Clinical Appropriateness Evaluation of Diagnostic Examinations</td>
+                      <td>Diagnosis and Differential Diagnosis Capability</td>
+                      <td>Referral Decision-making Competence</td>
+                      <td>Acute and Critical Condition Recognition</td>
+                      <td>Complication Identification Skill</td>
+                      <td>Formulation of Optimal Treatment Plan</td>
+                      <td>Health Education Delivery Expertise</td>
+                      <td>Medical History Taking Proficiency</td>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>Qwen2.5-7B-Instruct</strong></td>
+                      <td>65.47 </td>
+                      <td>67.67 </td>
+                      <td>64.92 </td>
+                      <td>69.59 </td>
+                      <td>84.96 </td>
+                      <td>86.79 </td>
+                      <td>51.78 </td>
+                      <td>63.59 </td>
+                      <td>37.52 </td>
+                  </tr>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>Qwen2.5-72B-Instruct</strong></td>
+                      <td>70.05 </td>
+                      <td>71.23 </td>
+                      <td>69.75 </td>
+                      <td>79.13 </td>
+                      <td>89.79 </td>
+                      <td>87.04 </td>
+                      <td>63.82 </td>
+                      <td>72.00 </td>
+                      <td>44.07 </td>
+                  </tr>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>GPT-4o</strong></td>
+                      <td>74.20 </td>
+                      <td>75.07 </td>
+                      <td>73.98 </td>
+                      <td>76.54 </td>
+                      <td>93.09 </td>
+                      <td>89.00 </td>
+                      <td>61.36 </td>
+                      <td>72.48 </td>
+                      <td>50.72 </td>
+                  </tr>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>GPT-4-turbo</strong></td>
+                      <td>66.44 </td>
+                      <td>71.78 </td>
+                      <td>65.11 </td>
+                      <td>66.46 </td>
+                      <td>89.88 </td>
+                      <td>85.79 </td>
+                      <td>55.34 </td>
+                      <td>68.65 </td>
+                      <td>41.83 </td>
+                  </tr>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>Claude-3.5-sonnet</strong></td>
+                      <td>72.97 </td>
+                      <td>80.32 </td>
+                      <td>71.13 </td>
+                      <td>70.92 </td>
+                      <td>91.88 </td>
+                      <td>87.84 </td>
+                      <td>62.46 </td>
+                      <td>74.09 </td>
+                      <td>54.07 </td>
+                  </tr>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>Gemini-1.5-pro</strong></td>
+                      <td>72.54 </td>
+                      <td>74.88 </td>
+                      <td>71.96 </td>
+                      <td>70.96 </td>
+                      <td>87.13 </td>
+                      <td>86.63 </td>
+                      <td>66.94 </td>
+                      <td>76.32 </td>
+                      <td>46.80 </td>
+                  </tr>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>DeepSeek-V3</strong></td>
+                      <td>70.13 </td>
+                      <td>72.35 </td>
+                      <td>69.58 </td>
+                      <td>87.67 </td>
+                      <td>87.26 </td>
+                      <td>85.74 </td>
+                      <td>53.70 </td>
+                      <td>71.03 </td>
+                      <td>37.47 </td>
+                  </tr>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>DeepSeek-R1</strong></td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+                  </tr>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>HuatuoGPT-o1-7B</strong></td>
+                      <td>53.35 </td>
+                      <td>60.28 </td>
+                      <td>51.62 </td>
+                      <td>38.46 </td>
+                      <td>67.58 </td>
+                      <td>60.30 </td>
+                      <td>33.00 </td>
+                      <td>39.11 </td>
+                      <td>36.54 </td>
+                  </tr>
+                  <tr>
+                      <td style="white-space: nowrap;"><strong>o1-preview</strong></td>
+                      <td>74.91 </td>
+                      <td>70.62 </td>
+                      <td>75.99 </td>
+                      <td>97.00 </td>
+                      <td>96.12 </td>
+                      <td>89.41 </td>
+                      <td>66.58 </td>
+                      <td>91.80 </td>
+                      <td>55.12</td>
+                  </tr>
+              </tbody>
+          </table>
+          <p style="text-align: justify;"> DeepSeek-R1 showed a serious deficiency in following instructions. Within the standard evaluation process, 
+            DeepSeek-R1 frequently generated irrelevant and redundant answers unrelated to the current diagnostic stage, thus disrupting the evaluation process. 
+            Because it could not meet the basic evaluation requirements, DeepSeek-R1 was excluded from the <strong>AI Patient Test Set</strong> results
+          </p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <h2 class="title is-2 has-text-centered">The Evaluation Framework</h2>
+        <div class="content has-text-justified">
+          <p>
+            In order to meet the need for evaluating large language models, we have drawn on classic general practitioner (GP) competency frameworks such as WONCA, ACGME, McClelland’s competency research dictionary, the Iceberg Model, and the Onion Model. Taking into account the actual working conditions of GPs in China, we propose a general practice competency model specifically for assessing large language models.
+          </p>
+          <div style="max-height: 800px; overflow-y: auto; margin-bottom: 20px;">
+            <table style="border-collapse: collapse; border-top: 2px solid black; border-bottom: 2px solid black;">
+              <thead>
+                <tr>
+                  <th style="white-space: nowrap;">Primary Indicator</th>
+                  <th style="white-space: nowrap;">Secondary Indicator</th>
+                  <th style="white-space: nowrap;">Definition</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Basic Medical Knowledge</strong></td>
+                  <td>Basic Medical Knowledge</td>
+                  <td>
+                    Basic medical knowledge refers to the foundational scientific understanding that constitutes the core of medical practice, encompassing the structural, functional, biochemical and pathological mechanisms of the human body. It serves as the theoretical basis for clinical reasoning and evidence-based decision-making.
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="5"><strong>Diagnosis</strong></td>
+                  <td>Diagnosis and Differential Diagnosis Capability (including test interpretation)</td>
+                  <td>
+                    Diagnosis refers to the physician’s judgment of the disease based on the patient’s medical history, symptoms, signs, and auxiliary examination results.
+                    Differential diagnosis is the process of distinguishing the patient's main complaint from other diseases and excluding the possibilities of other conditions.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Medical History Taking Proficiency</td>
+                  <td>
+                    The ability to collect patient information in a comprehensive and accurate manner during the diagnostic and therapeutic process, including the patient’s physical symptoms, psychological, mental, social, and cultural factors, as well as family history.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Complication Identification Skill</td>
+                  <td>
+                    The ability to predict, diagnose, and manage potential complications that may arise during the patient's treatment process. Complications refer to other diseases or symptoms that arise during the course of a primary disease, either due to the disease itself or as a result of its treatment.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Acute and Critical Condition Recognition</td>
+                  <td>
+                    The ability to recognize conditions that occur suddenly, are critical in nature, and require urgent intervention, potentially leading to life-threatening situations.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Referral Decision-making Competence</td>
+                  <td>
+                    The ability to identify and recognize diseases that pose a threat to the patient's life and ensure timely and correct referral to appropriate specialists.
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="4"><strong>Decision-making</strong></td>
+                  <td>Formulation of Optimal Treatment Plan (with ancillary test selection)</td>
+                  <td>
+                    The ability to select an appropriate treatment plan based on the patient's condition.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Adverse Drug Reaction Management</td>
+                  <td>
+                    Adverse Drug Reaction (ADR) Management Competence refers to the comprehensive capability of healthcare institutions and professionals to promptly identify, scientifically assess, effectively intervene, accurately document, and systematically prevent unintended harmful reactions following medication use in clinical practice. Its core objectives are to minimize drug-related risks, ensure patient safety, and improve clinical outcomes through optimized therapeutic strategies. This competence requires adherence to evidence-based medicine principles, clinical protocols, and regulatory requirements, emphasizing multidisciplinary collaboration and continuous quality improvement.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Contraindications Awareness</td>
+                  <td>
+                    The ability of healthcare professionals or relevant personnel to accurately identify, comprehend, and apply drug contraindications (i.e., situations where a specific medication is prohibited or not recommended). This includes knowledge of patient-specific factors (e.g., allergies, pregnancy, hepatic/renal impairment), drug-drug interactions, disease-specific contraindications, and the practical skill to avoid inappropriate medication use in clinical settings, thereby ensuring patient safety.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Alternative Therapy Selection Capacity</td>
+                  <td>
+                    Alternative Treatment Selection Capacity refers to the comprehensive ability of patients or healthcare providers to systematically evaluate, appropriately choose, and effectively apply non-conventional therapeutic approaches (e.g., acupuncture, herbal medicine, energy therapies) when standard treatments are unsuitable, impractical, or ineffective. This capacity encompasses scientific understanding of alternative therapies, risk-benefit analysis, resource accessibility, and individualized decision-making skills, while integrating cultural context, patient values, and ethical considerations.
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="4"><strong>Health Management</strong></td>
+                  <td>Health Education Delivery Expertise</td>
+                  <td>
+                    The specific competency required to undertake individual and community health education responsibilities and effectively conduct health education activities.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tertiary Prevention Implementation</td>
+                  <td>
+                    The ability to implement health measures from the perspectives of prevention, treatment, and rehabilitation to achieve "preventing diseases before they occur, preventing disease progression during illness, and preventing recurrence after illness."
+                  </td>
+                </tr>
+                <tr>
+                  <td>Patient Compliance Improvement</td>
+                  <td>
+                    Patient Adherence Enhancement Capacity refers to the comprehensive ability of healthcare providers or care teams to systematically improve patients’ active cooperation and sustained compliance with treatment plans, medication regimens, or lifestyle modifications through strategies such as education, behavioral interventions, and optimized communication. This capacity involves understanding individual patient needs, identifying barriers to adherence, designing tailored interventions, and building trust through technical support, psychological reinforcement, and integration of social resources to foster long-term patient-provider collaboration.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Family Support Provision Ability</td>
+                  <td>
+                    Family Support Provision Ability refers to the collective ability of family members to provide emotional, financial, and practical resources to one another. It encompasses the functionality of a family unit to address life challenges, meet individual needs, and enhance overall well-being. Key components include emotional bonding, financial assistance, daily caregiving, educational guidance, and crisis management, reflecting the family’s cohesion, communication effectiveness, and resource allocation strategies.
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="1"><strong>Health Economics</strong></td>
+                  <td>Cost-effective Care Coordination</td>
+                  <td>
+                    The ability to scientifically control healthcare costs without compromising the quality of medical services, striving to minimize healthcare service fees and resource utilization.
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="1"><strong>Medical Ethics and Humanities</strong></td>
+                  <td>Humanistic Care Competency</td>
+                  <td>
+                    In medical and healthcare work, the communication between healthcare providers and patients regarding injury, illness, diagnosis, treatment, health, and related factors is primarily led by the healthcare provider. Through various comprehensive means of communication, the goal is to scientifically guide the treatment of the patient’s condition, achieve mutual understanding, and establish a collaborative relationship based on trust, ultimately contributing to human health maintenance, medical development, and societal progress.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!--
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <h2 class="title is-3 has-text-centered">GPbench Overview and Characteristic</h2>
+        <div class="content has-text-justified">
+          <p>
+            GPBench is a medical evaluation set designed to comprehensively assess the general practice competencies of LLMs in healthcare in China. Based on the specially designed evaluation framework, GPBench focuses on assessing model performance in key areas such as clinical decision support and doctor-patient communication.
+          </p>
+          <table style="border-collapse: collapse; border-top: 2px solid black; border-bottom: 2px solid black;"><thead>
+            <tr>
+              <th>Content</th>
+              <th>Test Set</th>
+              <th>Formart</th>
+              <th>Number</th>
+            </tr></thead>
+          <tbody>
+            <tr>
+              <td>Open-Source Data and Experts Supplement</td>
+              <td>MCQ Test Set</td>
+              <td>objective<br>questions</td>
+              <td>3661</td>
+            </tr>
+            <tr>
+              <td rowspan="2">Outpatient medical records containing any<br>of the following 8 major chronic diseases<br>or 10 common symptoms:<br><br>&nbsp;&nbsp;&nbsp;&nbsp;• 8 Major Chronic Diseases:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Hypertension (HTN)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Hyperlipidemia (HLD)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Coronary Artery Disease (CAD)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Chronic Kidney Disease (CKD)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Chronic Obstructive Pulmonary Disease (COPD)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Cerebrovascular Disease (CVD)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Diabetes Mellitus (DM)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Cancer (CA)<br><br>&nbsp;&nbsp;&nbsp;&nbsp;• 10 Common Symptoms:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Fever<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Edema<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Emaciation<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Chest Pain<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Headache<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Abdominal Pain<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Hematochezia<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Joint Pain<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Jaundice<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;– Cough</td>
+              <td>Clinical Case Test<br>Set</td>
+              <td>open-ended<br>generation</td>
+              <td>70</td>
+            </tr>
+            <tr>
+              <td>AI Patient Test Set</td>
+              <td>open-ended<br>interaction</td>
+              <td>70</td>
+            </tr>
+          </tbody></table>
+          <p>
+            This model comprises six primary general practice competency indicators (basic medical knowledge, diagno- sis, decision-making, health management, health economics, and medical ethics and humanities) and sixteen secondary indicators (basic medical knowledge, diagnosis and differential diagnosis capability, medical his- tory taking proficiency, complication identification skill; acute and critical condition recognition, referral decision-making competence, formulation of optimal treatment plans, adverse drug reaction management, contraindications awareness, alternative therapy selection capacity, health education delivery expertise, tertiary prevention implementation, patient compliance improvement, family support provision ability, cost-effective care coordination, and humanistic care competency). Our model encompasses the primary competencies required in the daily work of general practitioners, which are also the capabilities expected of AI in the GP setting.
+          </p>
+          <ul>
+            <li><strong>MCQ Test Set.</strong> The test set consists of 3,661 multiple-choice questions (MCQ) and aims to evaluate the foundational medical knowledge and theoretical competency of LLMs in general practice, focusing on verifying the completeness of the model's knowledge system.</li>
+            <li><strong>Clinical Case Test Set.</strong> Built on 70 real-world de-identified outpatient medical records, the test set adopts an open-ended analysis format, requiring LLMs to analyze complete outpatient cases and propose systematic diagnostic and treatment plans. It emphasizes the abilities of models to systematically analyze complex problems and identify blind spots within real-world clinical decision-making chains.</li>
+            <li><strong>AI Patient Test Set.</strong> Based on the same 70 real-world de-identified outpatient medical records, the test set simulates real-world consultations by constructing AI-driven “patients” that dynamically interact with the LLM. It evaluates the clinical responsiveness and decision-making capabilities of LLMs in a simulated outpatient setting.</li>
+          </ul>
+          <p>The <em>Clinical Case Test Set</em> and <em>AI Patient Test Set</em> are both built on 70 real-world de-identified outpatient medical records, covering eight major chronic diseases and ten common symptoms encountered in general practice. The reason we chose these diseases is that they have a relatively high consultation frequency in our survey targeting general practitioners. Moreover, CKD has a high prevalence in China and shows a clear upward trend. CVD is one of the leading causes of death in China, while CA ranks second among non-communicable chronic diseases in terms of mortality. Therefore, we selected samples from these eight diseases as evaluation cases. The reason we chose these ten symptoms is that they frequently appear in clinical consultations with general practitioners.</p>
+          <p><strong>Metrics.</strong></p>
+          <p>For the <em>MCQ Test Set</em>, we calculated the LLM’s accuracy in answering questions. To more precisely analyze the knowledge ability in terms of competence dimensions, we labeled each question with the corresponding competence indicator.</p>
+          <p>For the <em>Clinical Case Test</em>, experienced clinical experts—based on actual work requirements—provide detailed correct answers, e.g., differential diagnosis, treatment, health education, and whether further examinations are needed. They also tag each part of the answer with its corresponding competence indicator. These answers can be directly used as clinical treatment of the corresponding patient. The experts then score the LLM’s output according to these labeled correct answers.</p>
+          <p>For the <em>AI Patient Test Set</em>, experienced clinical experts score the diagnosis and treatment plans (including physical examinations and ancillary tests) generated by the LLMs after conversations with AI patients.</p>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      <!-- @article{park2021nerfies,
+                author  = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+                title   = {Nerfies: Deformable Neural Radiance Fields},
+                journal = {ICCV},
+                year    = {2021},} -->
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
