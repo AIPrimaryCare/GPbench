@@ -167,7 +167,21 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <h2 class="title is-2 has-text-centered">What is GPBench?</h2>
-      <p class="description" style = "font-size: 1.25rem; text-align: justify;">GPBench is the first LLM medical evaluation framework for the work scenarios of general practitioners (GPs). It realizes the systematic assessment of LLM’s general practice capabilities for the first time, and provides a standardized paradigm for the evaluation of the practical application of medical AI in general practice. GPBench is built around three core operational scenarios: clinical knowledge application, systematic analysis of medical records, and dynamic outpatient interactions. Correspondingly, it comprises three specialized test sets: the <b>MCQ Test Set</b>, the <b>Clinical Case Test Set</b>, and the <b>AI Patient Test Set</b>.</p>
+      <p class="description" style = "font-size: 1.25rem; text-align: justify;">
+        GPBench is the first LLM medical evaluation framework for the work scenarios of general practitioners (GPs). 
+        It realizes the systematic assessment of LLM’s general practice capabilities for the first time, and 
+        provides a standardized paradigm for the evaluation of the practical application of medical AI in general practice. 
+        GPBench is built around three core operational scenarios: clinical knowledge application, systematic analysis of medical records, 
+        and dynamic outpatient interactions. Correspondingly, it comprises three specialized test sets: 
+        the <b>MCQ Test Set</b>, the <b>Clinical Case Test Set</b>, and the <b>AI Patient Test Set</b>. All data were meticulously curated by experts from Tertiary A-grade hospital and
+        constructed into high-precision ground truth based on clinical management standards. The data underwent rigorous fine-grained labeling, covering key competency indicators 
+        to ensure the accuracy and clinical relevance of the evaluation results. Additionally, all data were strictly de-identified and reviewed for medical ethics compliance.
+      </p>
+      <p class="description" style = "font-size: 1.25rem; text-align: justify;">
+        Our evaluation results indicate that LLMs exhibit common shortcomings in multiple competencies required for GPs, 
+        reflecting underlying issues in their mechanisms, including <strong>hallucination</strong>, <strong>mechanistic modeling blindness</strong>, <strong>coarse granularity</strong>, and <strong>evidence-based practice insufficient</strong>.
+        Dtails are shown in our paper: <em>[Paper Link]</em>
+      </p>
       <div style="height: 30px;"></div>
       <figure>
         <img id="overview" src="./static/images/fig1_overview.png" alt="overview" style="height: 100%;">
@@ -915,9 +929,8 @@
          
           </div>
           <div style="height: 30px;"></div>
-          <p style="text-align: justify;"> DeepSeek-R1 showed a serious deficiency in following instructions. Within the standard evaluation process, 
-            DeepSeek-R1 frequently generated irrelevant and redundant answers unrelated to the current diagnostic stage, thus disrupting the evaluation process. 
-            Because it could not meet the basic evaluation requirements, DeepSeek-R1 was excluded from the <strong>AI Patient Test Set</strong> results
+          <p style="text-align: justify;"> DeepSeek-R1, as a reasoning model, is not suitable for dialogue interaction scenarios.
+            Because it could not meet the basic evaluation requirements, DeepSeek-R1 was excluded from the <strong>AI Patient Test Set</strong> results.
           </p>
         </div>
 
@@ -939,18 +952,19 @@
           <h4 class="title is-4 has-text-justified">Diagnosis</h4>
           <p>LLMs generally exhibit several deficiencies in diagnosis, including:</p>
           <ul>
-            <li>A lack of structured staging and grading systems, often leading to hallucinations.</li>
-            <li>Difficulty in recognizing complications.</li>
-            <li>Inability to accurately assess critical and emergency conditions.</li>
-            <li>Insufficient capability in diagnosing rare diseases.</li>
+            <li>Absence of grading and staging system</li>
+            <li>Hallucinations on grading and staging</li>
+            <li>Blind spots in complication recognition</li>
+            <li>Deficiency in acute and severe condition assessment</li>
+            <li>Lack of rare disease diagnosis</li>
           </ul>
           <h4 class="title is-4 has-text-justified">Treatment Decision-Making</h4>
           <p>  LLMs commonly struggle with: </p>
           <ul>
-            <li>Lack of clear treatment objectives.</li>
-            <li>Risks in medication management.</li>
-            <li>Blind spots in non-pharmacological interventions.</li>
-            <li>Inadequate adherence to standardized protocols for managing severe conditions.</li>
+            <li>Lack of clear treatment goals</li>
+            <li>Pharmacotherapy risks</li>
+            <li>Blind spots in non-pharmacological interventions</li>
+            <li>Insufficient standardization in critical illness management</li>
           </ul>
 
           <h4 class="title is-4 has-text-justified">Health Management</h4>
@@ -958,7 +972,7 @@
           </p>
 
           <h4 class="title is-4 has-text-justified">Health Economics</h4>
-          <p>Evaluations on the Clinical Case and AI Patient test sets reveal that all LLMs fail to address treatment cost control and humanistic care, even when explicitly prompted. This suggests that current LLMs' understanding of primary healthcare remains at a simplified diagnostic and treatment level, lacking awareness of the broader social aspects of medical services.
+          <p>Evaluations on the Clinical Case Test Set and AI Patient Test Set reveal that all LLMs fail to address treatment cost control and humanistic care, even when explicitly prompted. This suggests that current LLMs' understanding of primary healthcare remains at a simplified diagnostic and treatment level, lacking awareness of the broader social aspects of medical services.
           </p>
 
           <h4 class="title is-4 has-text-justified">Medical Ethics and Humanistic Care</h4>
