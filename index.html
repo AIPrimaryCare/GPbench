@@ -110,8 +110,8 @@
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>The Sixth Affiliated Hospital of Sun Yat-sen University,</span>
             <span class="author-block"><sup>2</sup> Guangdong Laboratory of Artificial Intelligence and Digital Economy (SZ),</span>
-            <span class="author-block"><sup>2</sup> Xinyi People’s Hospital,</span>
-            <span class="author-block"><sup>2</sup> School of Intelligent Systems Engineering, Sun Yat-sen University</span>
+            <span class="author-block"><sup>3</sup> Xinyi People’s Hospital,</span>
+            <span class="author-block"><sup>4</sup> School of Intelligent Systems Engineering, Sun Yat-sen University</span>
           </div>
 
           <div class="column has-text-centered">
@@ -167,7 +167,7 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <h2 class="title is-2 has-text-centered">What is GPBench?</h2>
-      <p class="description" style = "font-size: 1.25rem; text-align: justify;">GPBench is the first LLM medical evaluation framework for the work scenarios of general practitioners (GPs). It realizes the systematic assessment of LLM’s general practice capabilities for the first time, and provides a standardized paradigm for the evaluation of the practical application of medical AI in GPs. GPBench is built around three core operational scenarios: clinical knowledge application, systematic analysis of medical records, and dynamic outpatient interactions. Correspondingly, it comprises three specialized test sets: the <b>MCQ Test Set</b>, the <b>Clinical Case Test Set</b>, and the <b>AI Patient Test Set</b>.</p>
+      <p class="description" style = "font-size: 1.25rem; text-align: justify;">GPBench is the first LLM medical evaluation framework for the work scenarios of general practitioners (GPs). It realizes the systematic assessment of LLM’s general practice capabilities for the first time, and provides a standardized paradigm for the evaluation of the practical application of medical AI in general practice. GPBench is built around three core operational scenarios: clinical knowledge application, systematic analysis of medical records, and dynamic outpatient interactions. Correspondingly, it comprises three specialized test sets: the <b>MCQ Test Set</b>, the <b>Clinical Case Test Set</b>, and the <b>AI Patient Test Set</b>.</p>
       <div style="height: 30px;"></div>
       <figure>
         <img id="overview" src="./static/images/fig1_overview.png" alt="overview" style="height: 100%;">
@@ -227,6 +227,137 @@
   </div>
 </section>
 
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <h2 class="title is-2 has-text-centered">The Evaluation Framework</h2>
+        <div class="content has-text-justified">
+          <p>
+            In order to meet the need for evaluating large language models, we have drawn on classic general practitioner (GP) competency frameworks such as WONCA, ACGME, McClelland’s competency research dictionary, the Iceberg Model, and the Onion Model. Taking into account the actual working conditions of GPs in China, we propose a general practice competency model specifically for assessing large language models.
+          </p>
+          <div style="max-height: 800px; overflow-y: auto; margin-bottom: 20px;">
+            <table style="border-collapse: collapse; border-top: 2px solid black; border-bottom: 2px solid black;">
+              <thead>
+                <tr>
+                  <th style="white-space: nowrap;">Primary Indicator</th>
+                  <th style="white-space: nowrap;">Secondary Indicator</th>
+                  <th style="white-space: nowrap;">Definition</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Basic Medical Knowledge</strong></td>
+                  <td>Basic Medical Knowledge</td>
+                  <td>
+                    Basic medical knowledge refers to the foundational scientific understanding that constitutes the core of medical practice, encompassing the structural, functional, biochemical and pathological mechanisms of the human body. It serves as the theoretical basis for clinical reasoning and evidence-based decision-making.
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="5"><strong>Diagnosis</strong></td>
+                  <td>Diagnosis and Differential Diagnosis Capability (including test interpretation)</td>
+                  <td>
+                    Diagnosis refers to the physician’s judgment of the disease based on the patient’s medical history, symptoms, signs, and auxiliary examination results.
+                    Differential diagnosis is the process of distinguishing the patient's main complaint from other diseases and excluding the possibilities of other conditions.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Medical History Taking Proficiency</td>
+                  <td>
+                    The ability to collect patient information in a comprehensive and accurate manner during the diagnostic and therapeutic process, including the patient’s physical symptoms, psychological, mental, social, and cultural factors, as well as family history.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Complication Identification Skill</td>
+                  <td>
+                    The ability to predict, diagnose, and manage potential complications that may arise during the patient's treatment process. Complications refer to other diseases or symptoms that arise during the course of a primary disease, either due to the disease itself or as a result of its treatment.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Acute and Critical Condition Recognition</td>
+                  <td>
+                    The ability to recognize conditions that occur suddenly, are critical in nature, and require urgent intervention, potentially leading to life-threatening situations.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Referral Decision-making Competence</td>
+                  <td>
+                    The ability to identify and recognize diseases that pose a threat to the patient's life and ensure timely and correct referral to appropriate specialists.
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="4"><strong>Decision-making</strong></td>
+                  <td>Formulation of Optimal Treatment Plan (with ancillary test selection)</td>
+                  <td>
+                    The ability to select an appropriate treatment plan based on the patient's condition.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Adverse Drug Reaction Management</td>
+                  <td>
+                    Adverse Drug Reaction (ADR) Management Competence refers to the comprehensive capability of healthcare institutions and professionals to promptly identify, scientifically assess, effectively intervene, accurately document, and systematically prevent unintended harmful reactions following medication use in clinical practice. Its core objectives are to minimize drug-related risks, ensure patient safety, and improve clinical outcomes through optimized therapeutic strategies. This competence requires adherence to evidence-based medicine principles, clinical protocols, and regulatory requirements, emphasizing multidisciplinary collaboration and continuous quality improvement.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Contraindications Awareness</td>
+                  <td>
+                    The ability of healthcare professionals or relevant personnel to accurately identify, comprehend, and apply drug contraindications (i.e., situations where a specific medication is prohibited or not recommended). This includes knowledge of patient-specific factors (e.g., allergies, pregnancy, hepatic/renal impairment), drug-drug interactions, disease-specific contraindications, and the practical skill to avoid inappropriate medication use in clinical settings, thereby ensuring patient safety.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Alternative Therapy Selection Capacity</td>
+                  <td>
+                    Alternative Treatment Selection Capacity refers to the comprehensive ability of patients or healthcare providers to systematically evaluate, appropriately choose, and effectively apply non-conventional therapeutic approaches (e.g., acupuncture, herbal medicine, energy therapies) when standard treatments are unsuitable, impractical, or ineffective. This capacity encompasses scientific understanding of alternative therapies, risk-benefit analysis, resource accessibility, and individualized decision-making skills, while integrating cultural context, patient values, and ethical considerations.
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="4"><strong>Health Management</strong></td>
+                  <td>Health Education Delivery Expertise</td>
+                  <td>
+                    The specific competency required to undertake individual and community health education responsibilities and effectively conduct health education activities.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tertiary Prevention Implementation</td>
+                  <td>
+                    The ability to implement health measures from the perspectives of prevention, treatment, and rehabilitation to achieve "preventing diseases before they occur, preventing disease progression during illness, and preventing recurrence after illness."
+                  </td>
+                </tr>
+                <tr>
+                  <td>Patient Compliance Improvement</td>
+                  <td>
+                    Patient Adherence Enhancement Capacity refers to the comprehensive ability of healthcare providers or care teams to systematically improve patients’ active cooperation and sustained compliance with treatment plans, medication regimens, or lifestyle modifications through strategies such as education, behavioral interventions, and optimized communication. This capacity involves understanding individual patient needs, identifying barriers to adherence, designing tailored interventions, and building trust through technical support, psychological reinforcement, and integration of social resources to foster long-term patient-provider collaboration.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Family Support Provision Ability</td>
+                  <td>
+                    Family Support Provision Ability refers to the collective ability of family members to provide emotional, financial, and practical resources to one another. It encompasses the functionality of a family unit to address life challenges, meet individual needs, and enhance overall well-being. Key components include emotional bonding, financial assistance, daily caregiving, educational guidance, and crisis management, reflecting the family’s cohesion, communication effectiveness, and resource allocation strategies.
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="1"><strong>Health Economics</strong></td>
+                  <td>Cost-effective Care Coordination</td>
+                  <td>
+                    The ability to scientifically control healthcare costs without compromising the quality of medical services, striving to minimize healthcare service fees and resource utilization.
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="1"><strong>Medical Ethics and Humanities</strong></td>
+                  <td>Humanistic Care Competency</td>
+                  <td>
+                    In medical and healthcare work, the communication between healthcare providers and patients regarding injury, illness, diagnosis, treatment, health, and related factors is primarily led by the healthcare provider. Through various comprehensive means of communication, the goal is to scientifically guide the treatment of the patient’s condition, achieve mutual understanding, and establish a collaborative relationship based on trust, ultimately contributing to human health maintenance, medical development, and societal progress.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -781,12 +912,13 @@
                   </tr>
               </tbody>
           </table>
+         
+          </div>
+          <div style="height: 30px;"></div>
           <p style="text-align: justify;"> DeepSeek-R1 showed a serious deficiency in following instructions. Within the standard evaluation process, 
             DeepSeek-R1 frequently generated irrelevant and redundant answers unrelated to the current diagnostic stage, thus disrupting the evaluation process. 
             Because it could not meet the basic evaluation requirements, DeepSeek-R1 was excluded from the <strong>AI Patient Test Set</strong> results
           </p>
-          </div>
-
         </div>
 
       </div>
@@ -795,137 +927,71 @@
 </section>
 
 
-
 <section class="section">
-  <div class="container is-max-desktop">
+  <div  class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full">
-        <h2 class="title is-2 has-text-centered">The Evaluation Framework</h2>
+        <h2 class="title is-2 has has-text-centered">Analysis</h2>
         <div class="content has-text-justified">
           <p>
-            In order to meet the need for evaluating large language models, we have drawn on classic general practitioner (GP) competency frameworks such as WONCA, ACGME, McClelland’s competency research dictionary, the Iceberg Model, and the Onion Model. Taking into account the actual working conditions of GPs in China, we propose a general practice competency model specifically for assessing large language models.
+            Significant deficiencies were observed across multiple dimensions. Notably, the Chinese LLM DeepSeek-R1 demonstrated superior performance in key capabilities such as diagnosis and treatment compared to other LLMs. However, it still shares common limitations with other models.
+  
+  Diagnostic Performance
+  LLMs generally exhibit several deficiencies in diagnosis, including:
+  
+  A lack of structured staging and grading systems, often leading to hallucinations.
+  
+  Difficulty in recognizing complications.
+  
+  Inability to accurately assess critical and emergency conditions.
+  
+  Insufficient capability in diagnosing rare diseases.
+  
+  Treatment Decision-Making
+  LLMs commonly struggle with:
+  
+  Lack of clear treatment objectives.
+  
+  Risks in medication management.
+  
+  Blind spots in non-pharmacological interventions.
+  
+  Inadequate adherence to standardized protocols for managing severe conditions.
+  
+  Health Management
+  LLMs tend to provide overly generalized health education recommendations. While their outputs meet basic scoring criteria, they remain broad and lack actionable, specific guidance, making them insufficient for supporting real-world clinical practice.
+  
+  Health Economics
+  Evaluations on the Clinical Case and AI Patient test sets reveal that all LLMs fail to address treatment cost control and humanistic care, even when explicitly prompted. This suggests that current LLMs' understanding of primary healthcare remains at a simplified diagnostic and treatment level, lacking awareness of the broader social aspects of medical services.
+  
+  Medical Ethics and Humanistic Care
+  All LLMs exhibit risks related to overdiagnosis, overtreatment, and misdiagnosis, indicating a need for further refinement in clinical decision-making.
+  
+  Strengths and Limitations of DeepSeek-R1
+  Experts highlighted that among the ten evaluated models, DeepSeek-R1 performed relatively well in diagnosis and treatment:
+  
+  In diagnosis, it demonstrated more accurate staging and grading of diseases, and its diagnostic labels were more standardized and comprehensive than those of other LLMs.
+  
+  In treatment planning, DeepSeek-R1 adjusted strategies based on patient conditions and medication contraindications while emphasizing medication monitoring.
+  
+  This notable differentiation suggests directions for optimizing LLMs for general medical applications. However, DeepSeek-R1 still requires further improvements in instruction adherence, as evidenced by its performance in the AI Patient test set.
+  
+  Conclusion
+  Our study confirms that current LLMs are not yet suitable for independent deployment in real-world general practice without human supervision. While DeepSeek-R1 outperforms other models in key areas, it still shares common capability gaps with its peers.
+  
+  The full study, including detailed comparative data, has been published. Click the link to access the complete report: [Paper Link]
           </p>
-          <div style="max-height: 800px; overflow-y: auto; margin-bottom: 20px;">
-            <table style="border-collapse: collapse; border-top: 2px solid black; border-bottom: 2px solid black;">
-              <thead>
-                <tr>
-                  <th style="white-space: nowrap;">Primary Indicator</th>
-                  <th style="white-space: nowrap;">Secondary Indicator</th>
-                  <th style="white-space: nowrap;">Definition</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Basic Medical Knowledge</strong></td>
-                  <td>Basic Medical Knowledge</td>
-                  <td>
-                    Basic medical knowledge refers to the foundational scientific understanding that constitutes the core of medical practice, encompassing the structural, functional, biochemical and pathological mechanisms of the human body. It serves as the theoretical basis for clinical reasoning and evidence-based decision-making.
-                  </td>
-                </tr>
-                <tr>
-                  <td rowspan="5"><strong>Diagnosis</strong></td>
-                  <td>Diagnosis and Differential Diagnosis Capability (including test interpretation)</td>
-                  <td>
-                    Diagnosis refers to the physician’s judgment of the disease based on the patient’s medical history, symptoms, signs, and auxiliary examination results.
-                    Differential diagnosis is the process of distinguishing the patient's main complaint from other diseases and excluding the possibilities of other conditions.
-                  </td>
-                </tr>
-                <tr>
-                  <td>Medical History Taking Proficiency</td>
-                  <td>
-                    The ability to collect patient information in a comprehensive and accurate manner during the diagnostic and therapeutic process, including the patient’s physical symptoms, psychological, mental, social, and cultural factors, as well as family history.
-                  </td>
-                </tr>
-                <tr>
-                  <td>Complication Identification Skill</td>
-                  <td>
-                    The ability to predict, diagnose, and manage potential complications that may arise during the patient's treatment process. Complications refer to other diseases or symptoms that arise during the course of a primary disease, either due to the disease itself or as a result of its treatment.
-                  </td>
-                </tr>
-                <tr>
-                  <td>Acute and Critical Condition Recognition</td>
-                  <td>
-                    The ability to recognize conditions that occur suddenly, are critical in nature, and require urgent intervention, potentially leading to life-threatening situations.
-                  </td>
-                </tr>
-                <tr>
-                  <td>Referral Decision-making Competence</td>
-                  <td>
-                    The ability to identify and recognize diseases that pose a threat to the patient's life and ensure timely and correct referral to appropriate specialists.
-                  </td>
-                </tr>
-                <tr>
-                  <td rowspan="4"><strong>Decision-making</strong></td>
-                  <td>Formulation of Optimal Treatment Plan (with ancillary test selection)</td>
-                  <td>
-                    The ability to select an appropriate treatment plan based on the patient's condition.
-                  </td>
-                </tr>
-                <tr>
-                  <td>Adverse Drug Reaction Management</td>
-                  <td>
-                    Adverse Drug Reaction (ADR) Management Competence refers to the comprehensive capability of healthcare institutions and professionals to promptly identify, scientifically assess, effectively intervene, accurately document, and systematically prevent unintended harmful reactions following medication use in clinical practice. Its core objectives are to minimize drug-related risks, ensure patient safety, and improve clinical outcomes through optimized therapeutic strategies. This competence requires adherence to evidence-based medicine principles, clinical protocols, and regulatory requirements, emphasizing multidisciplinary collaboration and continuous quality improvement.
-                  </td>
-                </tr>
-                <tr>
-                  <td>Contraindications Awareness</td>
-                  <td>
-                    The ability of healthcare professionals or relevant personnel to accurately identify, comprehend, and apply drug contraindications (i.e., situations where a specific medication is prohibited or not recommended). This includes knowledge of patient-specific factors (e.g., allergies, pregnancy, hepatic/renal impairment), drug-drug interactions, disease-specific contraindications, and the practical skill to avoid inappropriate medication use in clinical settings, thereby ensuring patient safety.
-                  </td>
-                </tr>
-                <tr>
-                  <td>Alternative Therapy Selection Capacity</td>
-                  <td>
-                    Alternative Treatment Selection Capacity refers to the comprehensive ability of patients or healthcare providers to systematically evaluate, appropriately choose, and effectively apply non-conventional therapeutic approaches (e.g., acupuncture, herbal medicine, energy therapies) when standard treatments are unsuitable, impractical, or ineffective. This capacity encompasses scientific understanding of alternative therapies, risk-benefit analysis, resource accessibility, and individualized decision-making skills, while integrating cultural context, patient values, and ethical considerations.
-                  </td>
-                </tr>
-                <tr>
-                  <td rowspan="4"><strong>Health Management</strong></td>
-                  <td>Health Education Delivery Expertise</td>
-                  <td>
-                    The specific competency required to undertake individual and community health education responsibilities and effectively conduct health education activities.
-                  </td>
-                </tr>
-                <tr>
-                  <td>Tertiary Prevention Implementation</td>
-                  <td>
-                    The ability to implement health measures from the perspectives of prevention, treatment, and rehabilitation to achieve "preventing diseases before they occur, preventing disease progression during illness, and preventing recurrence after illness."
-                  </td>
-                </tr>
-                <tr>
-                  <td>Patient Compliance Improvement</td>
-                  <td>
-                    Patient Adherence Enhancement Capacity refers to the comprehensive ability of healthcare providers or care teams to systematically improve patients’ active cooperation and sustained compliance with treatment plans, medication regimens, or lifestyle modifications through strategies such as education, behavioral interventions, and optimized communication. This capacity involves understanding individual patient needs, identifying barriers to adherence, designing tailored interventions, and building trust through technical support, psychological reinforcement, and integration of social resources to foster long-term patient-provider collaboration.
-                  </td>
-                </tr>
-                <tr>
-                  <td>Family Support Provision Ability</td>
-                  <td>
-                    Family Support Provision Ability refers to the collective ability of family members to provide emotional, financial, and practical resources to one another. It encompasses the functionality of a family unit to address life challenges, meet individual needs, and enhance overall well-being. Key components include emotional bonding, financial assistance, daily caregiving, educational guidance, and crisis management, reflecting the family’s cohesion, communication effectiveness, and resource allocation strategies.
-                  </td>
-                </tr>
-                <tr>
-                  <td rowspan="1"><strong>Health Economics</strong></td>
-                  <td>Cost-effective Care Coordination</td>
-                  <td>
-                    The ability to scientifically control healthcare costs without compromising the quality of medical services, striving to minimize healthcare service fees and resource utilization.
-                  </td>
-                </tr>
-                <tr>
-                  <td rowspan="1"><strong>Medical Ethics and Humanities</strong></td>
-                  <td>Humanistic Care Competency</td>
-                  <td>
-                    In medical and healthcare work, the communication between healthcare providers and patients regarding injury, illness, diagnosis, treatment, health, and related factors is primarily led by the healthcare provider. Through various comprehensive means of communication, the goal is to scientifically guide the treatment of the patient’s condition, achieve mutual understanding, and establish a collaborative relationship based on trust, ultimately contributing to human health maintenance, medical development, and societal progress.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+
+        </div>
 
       </div>
+    
+
     </div>
   </div>
+       
 </section>
+
 <!--
 <section class="section">
   <div class="container is-max-desktop">
