@@ -51,14 +51,14 @@
           <h1 class="title is-1 publication-title">GPBench: A Comprehensive and Fine-Grained Benchmark for Evaluating Large Language Models as General Practitioners</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              Zheqing Li</a><sup>1</sup>,</span>
+              Zheqing Li</a><sup>1</sup><sup>∗</sup> ,</span>
             <span class="author-block">
-              Yiying Yang</a><sup>2</sup>,</span>
+              Yiying Yang</a><sup>2</sup><sup>∗</sup>,</span>
             <span class="author-block">
-              Jiping Lang</a><sup>1</sup>,
+              Jiping Lang</a><sup>1</sup><sup>∗</sup>,
             </span>
             <span class="author-block">
-              <a href="https://cswhjiang.github.io/">Wenhao Jiang</a><sup>2</sup>,
+              <a href="https://cswhjiang.github.io/">Wenhao Jiang</a><sup>2</sup><sup>∗</sup><sup>†</sup><sup>‡</sup>,
             </span>
             <span class="author-block">
               Yuhang Zhao</a><sup>2</sup>,
@@ -100,10 +100,10 @@
               Yixian Chen</a><sup>4</sup>,
             </span>
             <span class="author-block">
-              Junrong Chen</a><sup>1</sup>,
+              Junrong Chen</a><sup>1</sup><sup>†</sup>,
             </span>
             <span class="author-block">
-              Lin Yao</a><sup>1</sup>,
+              Lin Yao</a><sup>1</sup><sup>†</sup><sup>‡</sup>,
             </span>
           </div>
 
@@ -112,6 +112,7 @@
             <span class="author-block"><sup>2</sup> Guangdong Laboratory of Artificial Intelligence and Digital Economy (SZ),</span>
             <span class="author-block"><sup>3</sup> Xinyi People’s Hospital,</span>
             <span class="author-block"><sup>4</sup> School of Intelligent Systems Engineering, Sun Yat-sen University</span>
+            <span class="author-block"><sup>∗</sup>Co-first author. <sup>†</sup>Corresponding authors. <sup>‡</sup>Co-lead the project</span>
           </div>
 
           <div class="column has-text-centered">
@@ -168,18 +169,21 @@
     <div class="hero-body">
       <h2 class="title is-2 has-text-centered">What is GPBench?</h2>
       <p class="description" style = "font-size: 1.25rem; text-align: justify;">
-        GPBench is the first LLM medical evaluation framework for the work scenarios of general practitioners (GPs). 
-        It realizes the systematic assessment of LLM’s general practice capabilities for the first time, and 
-        provides a standardized paradigm for the evaluation of the practical application of medical AI in general practice. 
+        GPBench is the first LLM-based medical evaluation framework specifically designed for the work scenarios of general practitioners (GPs). 
+        It enables a systematic assessment of LLMs' capabilities in general practice for the first time, establishing a standardized paradigm for
+        evaluating the practical application of medical AI in this field. 
         GPBench is built around three core operational scenarios: clinical knowledge application, systematic analysis of medical records, 
         and dynamic outpatient interactions. Correspondingly, it comprises three specialized test sets: 
-        the <b>MCQ Test Set</b>, the <b>Clinical Case Test Set</b>, and the <b>AI Patient Test Set</b>. All data were meticulously curated by experts from Tertiary A-grade hospital and
-        constructed into high-precision ground truth based on clinical management standards. The data underwent rigorous fine-grained labeling, covering key competency indicators 
-        to ensure the accuracy and clinical relevance of the evaluation results. Additionally, all data were strictly de-identified and reviewed for medical ethics compliance.
+        the <b>MCQ Test Set</b>, the <b>Clinical Case Test Set</b>, and the <b>AI Patient Test Set</b>. 
+        All data were meticulously curated by experts from top-tier Tertiary A-grade hospitals and constructed into high-precision ground truth
+        following established clinical management standards. The data underwent rigorous fine-grained annotation, covering key competency indicators 
+        to ensure the accuracy and clinical relevance of the evaluation results. Furthermore, all data were strictly de-identified and thoroughly reviewed 
+        to ensure compliance with medical ethics regulations.
       </p>
       <p class="description" style = "font-size: 1.25rem; text-align: justify;">
         Our evaluation results indicate that LLMs exhibit common shortcomings in multiple competencies required for GPs, 
-        reflecting underlying issues in their mechanisms, including <strong>hallucination</strong>, <strong>mechanistic modeling blindness</strong>, <strong>coarse granularity</strong>, and <strong>evidence-based practice insufficient</strong>.
+         inferring that LLMs encounter the following issues in general pratice scenarios: <strong>medical hallucination</strong>, <strong>lack of understanding and modeling of human physiology and pharmacology</strong>,
+         <strong>inaccuracy in fine-grained information and fine-grained reasoning</strong>, and <strong>insufficient support for correct decision-making</strong>.
         Dtails are shown in our paper: <em>[Paper Link]</em>
       </p>
       <div style="height: 30px;"></div>
@@ -188,11 +192,11 @@
         <figcaption style="text-align: justify;">
           <strong>An overview of GPBench.</strong> For dataset construction, we compile multiple-choice questions
           from open-source datasets and real outpatient medical records from Tertiary A-grade hospitals to
-          create three test sets: MCQ Test Set, Clinical Case Test Set, and AI Patient Test. Ground truth
-          and scoring criteria for each case are annotated in details by experts. For evaluation, the GPBench
-          framework innovatively employs the classic competency model of general practitioners to assess
-          LLMs. Accuracy is used as the evaluation metric for the first test set, while for the other two test sets,
-          experts grade responses based on the annotated scoring criteria.
+          create three test sets: MCQ Test Set, Clinical Case Test Set, and AI Patient Test Set.  Each case is meticulously annotated by experts, 
+          who establish high-precision ground truth and detailed scoring criteria to ensure accuracy and clinical relevance. For evaluation, 
+          the GPBench framework introduces an innovative approach by integrating the classical competency model of general practitioners to 
+          assess LLM performance. Accuracy serves as the evaluation metric for the MCQ Test Set, while for the Clinical Case Test Set and 
+          AI Patient Test Set, expert evaluators grade model responses based on the predefined scoring criteria.
         </figcaption>
       </figure>
     
@@ -929,8 +933,8 @@
          
           </div>
           <div style="height: 30px;"></div>
-          <p style="text-align: justify;"> DeepSeek-R1, as a reasoning model, is not suitable for dialogue interaction scenarios.
-            Because it could not meet the basic evaluation requirements, DeepSeek-R1 was excluded from the <strong>AI Patient Test Set</strong> results.
+          <p style="text-align: justify;"> DeepSeek-R1, as a reasoning model, is not well-suited for dialogue interaction scenarios.
+            Due to its inability to meet the fundamental evaluation requirements, DeepSeek-R1 was excluded from the <strong>AI Patient Test Set</strong> results.
           </p>
         </div>
 
