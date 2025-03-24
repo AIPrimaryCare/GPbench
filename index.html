@@ -182,9 +182,9 @@
       </p>
       <p class="description" style = "font-size: 1.25rem; text-align: justify;">
         Our evaluation results indicate that LLMs exhibit common shortcomings in multiple competencies required for GPs, 
-         inferring that LLMs encounter the following issues in general practice scenarios: <strong>medical hallucination</strong>, <strong>lack of understanding and modeling of human physiology and pharmacology</strong>,
+         inferring that LLMs encounter the following issues in general pratice scenarios: <strong>medical hallucination</strong>, <strong>lack of understanding and modeling of human physiology and pharmacology</strong>,
          <strong>inaccuracy in fine-grained information and fine-grained reasoning</strong>, and <strong>insufficient support for correct decision-making</strong>.
-        Details are shown in our paper: <em>[Paper Link]</em>
+        Dtails are shown in our paper: <em>[Paper Link]</em>
       </p>
       <div style="height: 30px;"></div>
       <figure>
@@ -951,7 +951,8 @@
         <h2 class="title is-2 has has-text-centered">Analysis</h2>
         <div class="content has-text-justified">
           <p>
-            Significant deficiencies have been observed across multiple dimensions in the evaluation. Notably, the DeepSeek-R1 demonstrated superior performance in key capabilities such as diagnosis and treatment compared to other LLMs. However, it still shares common limitations with other models.
+            Significant deficiencies have been observed across multiple dimensions in the evaluation. Notably, the DeepSeek-R1 demonstrated superior performance in key capabilities 
+            such as diagnosis and treatment compared to other LLMs. However, it still shares common limitations with other models. The common shortcomings of LLMs discovered in our evaluation are as follows:
           </p>
           <h4 class="title is-4 has-text-justified">Diagnosis</h4>
           <p>LLMs generally exhibit several deficiencies in diagnosis, including:</p>
@@ -963,7 +964,7 @@
             <li>Lack of rare disease diagnosis</li>
           </ul>
           <h4 class="title is-4 has-text-justified">Treatment Decision-Making</h4>
-          <p>  LLMs commonly struggle with: </p>
+          <p> LLMs have significant deficiencies in treatment decision-making, including: </p>
           <ul>
             <li>Lack of clear treatment goals</li>
             <li>Pharmacotherapy risks</li>
@@ -982,7 +983,7 @@
           <h4 class="title is-4 has-text-justified">Medical Ethics and Humanistic Care</h4>
           <p>All LLMs exhibit risks related to overdiagnosis, overtreatment, and misdiagnosis, indicating a need for further refinement in clinical decision-making.</p>
 
-          <h4 class="title is-4 has-text-justified">Strengths and Limitations of DeepSeek-R1</h4>
+          <!-- <h4 class="title is-4 has-text-justified">Strengths and Limitations of DeepSeek-R1</h4>
           <p>Experts highlighted that among the ten evaluated models, DeepSeek-R1 performed relatively well in diagnosis and treatment:
   
             In diagnosis, it demonstrated more accurate staging and grading of diseases, and its diagnostic labels were more standardized and comprehensive than those of other LLMs.
@@ -990,7 +991,7 @@
             In treatment planning, DeepSeek-R1 adjusted strategies based on patient conditions and medication contraindications while emphasizing medication monitoring.
             
             This notable differentiation suggests directions for optimizing LLMs for general medical applications. However, DeepSeek-R1 still requires further improvements in instruction adherence, as evidenced by its performance in the AI Patient test set.
-            </p>
+            </p> -->
 
             <div style="height: 30px;"></div>
             <p>Our study confirms that <strong>LLMs are not yet suitable for independent deployment in real-world general practice without human supervision.</strong>  While DeepSeek-R1 outperforms other models in key areas, it still shares common capability gaps with its peers.
