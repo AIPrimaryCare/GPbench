@@ -934,53 +934,50 @@
         <h2 class="title is-2 has has-text-centered">Analysis</h2>
         <div class="content has-text-justified">
           <p>
-            Significant deficiencies were observed across multiple dimensions. Notably, the Chinese LLM DeepSeek-R1 demonstrated superior performance in key capabilities such as diagnosis and treatment compared to other LLMs. However, it still shares common limitations with other models.
-  
-  Diagnostic Performance
-  LLMs generally exhibit several deficiencies in diagnosis, including:
-  
-  A lack of structured staging and grading systems, often leading to hallucinations.
-  
-  Difficulty in recognizing complications.
-  
-  Inability to accurately assess critical and emergency conditions.
-  
-  Insufficient capability in diagnosing rare diseases.
-  
-  Treatment Decision-Making
-  LLMs commonly struggle with:
-  
-  Lack of clear treatment objectives.
-  
-  Risks in medication management.
-  
-  Blind spots in non-pharmacological interventions.
-  
-  Inadequate adherence to standardized protocols for managing severe conditions.
-  
-  Health Management
-  LLMs tend to provide overly generalized health education recommendations. While their outputs meet basic scoring criteria, they remain broad and lack actionable, specific guidance, making them insufficient for supporting real-world clinical practice.
-  
-  Health Economics
-  Evaluations on the Clinical Case and AI Patient test sets reveal that all LLMs fail to address treatment cost control and humanistic care, even when explicitly prompted. This suggests that current LLMs' understanding of primary healthcare remains at a simplified diagnostic and treatment level, lacking awareness of the broader social aspects of medical services.
-  
-  Medical Ethics and Humanistic Care
-  All LLMs exhibit risks related to overdiagnosis, overtreatment, and misdiagnosis, indicating a need for further refinement in clinical decision-making.
-  
-  Strengths and Limitations of DeepSeek-R1
-  Experts highlighted that among the ten evaluated models, DeepSeek-R1 performed relatively well in diagnosis and treatment:
-  
-  In diagnosis, it demonstrated more accurate staging and grading of diseases, and its diagnostic labels were more standardized and comprehensive than those of other LLMs.
-  
-  In treatment planning, DeepSeek-R1 adjusted strategies based on patient conditions and medication contraindications while emphasizing medication monitoring.
-  
-  This notable differentiation suggests directions for optimizing LLMs for general medical applications. However, DeepSeek-R1 still requires further improvements in instruction adherence, as evidenced by its performance in the AI Patient test set.
-  
-  Conclusion
-  Our study confirms that current LLMs are not yet suitable for independent deployment in real-world general practice without human supervision. While DeepSeek-R1 outperforms other models in key areas, it still shares common capability gaps with its peers.
-  
-  The full study, including detailed comparative data, has been published. Click the link to access the complete report: [Paper Link]
+            Significant deficiencies have been observed across multiple dimensions in the evaluation. Notably, the DeepSeek-R1 demonstrated superior performance in key capabilities such as diagnosis and treatment compared to other LLMs. However, it still shares common limitations with other models.
           </p>
+          <h4 class="title is-4 has-text-justified">Diagnosis</h4>
+          <p>LLMs generally exhibit several deficiencies in diagnosis, including:</p>
+          <ul>
+            <li>A lack of structured staging and grading systems, often leading to hallucinations.</li>
+            <li>Difficulty in recognizing complications.</li>
+            <li>Inability to accurately assess critical and emergency conditions.</li>
+            <li>Insufficient capability in diagnosing rare diseases.</li>
+          </ul>
+          <h4 class="title is-4 has-text-justified">Treatment Decision-Making</h4>
+          <p>  LLMs commonly struggle with: </p>
+          <ul>
+            <li>Lack of clear treatment objectives.</li>
+            <li>Risks in medication management.</li>
+            <li>Blind spots in non-pharmacological interventions.</li>
+            <li>Inadequate adherence to standardized protocols for managing severe conditions.</li>
+          </ul>
+
+          <h4 class="title is-4 has-text-justified">Health Management</h4>
+          <p>LLMs tend to provide overly generalized health education recommendations. While their outputs meet basic scoring criteria, they remain broad and lack actionable, specific guidance, making them insufficient for supporting real-world clinical practice.
+          </p>
+
+          <h4 class="title is-4 has-text-justified">Health Economics</h4>
+          <p>Evaluations on the Clinical Case and AI Patient test sets reveal that all LLMs fail to address treatment cost control and humanistic care, even when explicitly prompted. This suggests that current LLMs' understanding of primary healthcare remains at a simplified diagnostic and treatment level, lacking awareness of the broader social aspects of medical services.
+          </p>
+
+          <h4 class="title is-4 has-text-justified">Medical Ethics and Humanistic Care</h4>
+          <p>All LLMs exhibit risks related to overdiagnosis, overtreatment, and misdiagnosis, indicating a need for further refinement in clinical decision-making.</p>
+
+          <h4 class="title is-4 has-text-justified">Strengths and Limitations of DeepSeek-R1</h4>
+          <p>Experts highlighted that among the ten evaluated models, DeepSeek-R1 performed relatively well in diagnosis and treatment:
+  
+            In diagnosis, it demonstrated more accurate staging and grading of diseases, and its diagnostic labels were more standardized and comprehensive than those of other LLMs.
+            
+            In treatment planning, DeepSeek-R1 adjusted strategies based on patient conditions and medication contraindications while emphasizing medication monitoring.
+            
+            This notable differentiation suggests directions for optimizing LLMs for general medical applications. However, DeepSeek-R1 still requires further improvements in instruction adherence, as evidenced by its performance in the AI Patient test set.
+            </p>
+
+            <div style="height: 30px;"></div>
+            <p>Our study confirms that <strong>LLMs are not yet suitable for independent deployment in real-world general practice without human supervision.</strong>  While DeepSeek-R1 outperforms other models in key areas, it still shares common capability gaps with its peers.
+  
+              The full study, including detailed comparative data, has been published. Click the link to access the complete report: <em>[Paper Link]</em></p>
 
         </div>
 
