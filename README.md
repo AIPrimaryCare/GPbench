@@ -1,2 +1,1 @@
-GPBench：首个专注于基层医生全科胜任力评估的LLMs医学测评框架。
-由中山大学附属第六医院、中山大学附属第六医院粤西医院携手深圳光明实验室联合发布。
+GPBench: The first LLM-based medical evaluation framework focused on assessing the general practice competence of primary care physicians. Jointly released by the Sixth Affiliated Hospital of Sun Yat-sen University, the Xinyi People's Hospital, and the Guangming Laboratory.
