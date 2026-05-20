@@ -240,10 +240,20 @@
               </div>
             </div>
           </div>
+          <div style="height: 20px;"></div>
+
+          <figure>
+            <img id="overview" src="./static/images/fig1_overview_of_gpbench.png" alt="overview" style="height: 100%;">
+            <figcaption style="text-align: justify;">
+              <strong>Overview of GPBench.</strong> GPBench comprises a competency model and an evaluation dataset. The competency model delineates six primary indicators and fourteen secondary indicators, capturing the core competencies essential for routine general practice.
+              Based on the competency model, we collected data from open-source datasets and real outpatient medical records from Tertiary A-grade hospitals to create an evaluation dataset, which contains three parts: the Multiple-choice Question (MCQ) Test Set,  Clinical Case Test Set, and  Artificial Intelligence (AI) Patient Test Set.
+              Ground truth and scoring criteria for each case were annotated in detail by experts. Accuracy is used as the evaluation metric for the MCQ Test Set, while for the other two test sets, a three-member general practitioner panel grades responses based on the annotated scoring criteria.
+            </figcaption>
+          </figure>
 
           <div style="height: 24px;"></div>
 
-          <h3 class="title is-4 has-text-centered">Competency Model</h3>
+          <h3 class="title is-4 has-text-centered">Evaluation Framework</h3>
           
           <p class="description">
             The evaluation framework of GPBench is grounded in a competency model tailored to the real-world responsibilities of general practitioners.
@@ -271,17 +281,6 @@
               providing a structured basis for evaluating large language models in realistic primary care scenarios.
             </figcaption>
           </figure>
-
-          <div style="height: 20px;"></div>
-
-          <figure>
-            <img id="overview" src="./static/images/fig1_overview_of_gpbench.png" alt="overview" style="height: 100%;">
-            <figcaption style="text-align: justify;">
-              <strong>Overview of GPBench.</strong> GPBench comprises a competency model and an evaluation dataset. The competency model delineates six primary indicators and fourteen secondary indicators, capturing the core competencies essential for routine general practice.
-              Based on the competency model, we collected data from open-source datasets and real outpatient medical records from Tertiary A-grade hospitals to create an evaluation dataset, which contains three parts: the Multiple-choice Question (MCQ) Test Set,  Clinical Case Test Set, and  Artificial Intelligence (AI) Patient Test Set.
-              Ground truth and scoring criteria for each case were annotated in detail by experts. Accuracy is used as the evaluation metric for the MCQ Test Set, while for the other two test sets, a three-member general practitioner panel grades responses based on the annotated scoring criteria.
-            </figcaption>
-          </figure>
         </div>
       </div>
     </div>
@@ -302,20 +301,20 @@
           <div class="columns">
             <div class="column">
               <div class="soft-box">
-                <h4 class="title is-5">LLM evaluation</h4>
-                <p>Models include GPT-4o, GPT-4-turbo, o1-preview, Gemini-1.5-pro, Claude-3.5-Sonnet, Qwen2.5, DeepSeek, and HuatuoGPT variants.</p>
+                <h4 class="title is-5">LLM Evaluation</h4>
+                <p>Models include GPT-4o, GPT-4-turbo, o1-preview, Gemini-1.5-pro, Qwen2.5-7B-Instruct, Qwen2.5-72B-Instruct, Claude-3.5-Sonnet, DeepSeek-V3, DeepSeek-R1, and HuatuoGPT-o1-7B.</p>
               </div>
             </div>
             <div class="column">
               <div class="soft-box">
-                <h4 class="title is-5">Human baseline</h4>
+                <h4 class="title is-5">Human Referrence</h4>
                 <p>Three GP groups were evaluated: Group A with more than 10 years of experience, Group B with 5-10 years, and Group C with less than 5 years.</p>
               </div>
             </div>
             <div class="column">
               <div class="soft-box">
-                <h4 class="title is-5">Scoring design</h4>
-                <p>200 stratified MCQs were sampled for human comparison, while all 70 clinical cases and 70 AI-patient consultations were evaluated for both humans and models.</p>
+                <h4 class="title is-5">Scoring Design</h4>
+                <p>200 stratified MCQs were sampled for human evaluation, while all 70 clinical cases and 70 AI-patient consultations were evaluated for both humans and models. </p>
               </div>
             </div>
           </div>
@@ -341,13 +340,13 @@
               <tr>
                 <td><strong>Clinical Case Test Set</strong></td>
                 <td>Open-ended generation</td>
-                <td>Diagnosis, referral, treatment planning, health education</td>
+                <td>Diagnosis, treatment plann, health education</td>
                 <td>Expert rubric-based scoring</td>
               </tr>
               <tr>
                 <td><strong>AI Patient Test Set</strong></td>
                 <td>Interactive dialogue</td>
-                <td>Medical history taking plus downstream diagnostic and treatment competence</td>
+                <td>Medical history taking</td>
                 <td>Expert rubric-based scoring</td>
               </tr>
             </tbody>
@@ -367,59 +366,111 @@
 
         <div class="content has-text-justified">
           <p class="description">
-            The revised study shows a consistent pattern: <strong>LLMs can surpass human general practitioners on static multiple-choice knowledge tasks, but they still lag behind human physicians in realistic clinical reasoning and interactive history taking.</strong>
-            The strongest overall model is <strong>DeepSeek-R1</strong> on MCQ and clinical case evaluation, while <strong>o1-preview</strong> performs best on the AI Patient Test Set.
+            The study shows that <strong> LLMs have matched or even surpassed human physicians in assessments of static knowledge, they still lag significantly behind in interactive and reasoning-intensive clinical tasks. </strong>
+            Their strengths lie in factual recall and the clear articulation of information, yet they have not attained the practical competency level of even less experienced general practitioners in real-world diagnostic and patient-interview scenarios.
           </p>
         </div>
 
         <div class="content has-text-centered">
           <p style="font-size: 1.25rem;">
-            Comparison of top-level performance on the three benchmark settings, including human GP baselines.
+            Overall results of human physicians and representative LLMs on the three GPBench evaluation settings.
           </p>
           <div class="table-wrap">
             <table style="width: 100%; white-space: nowrap;">
               <thead>
                 <tr>
-                  <th>Setting</th>
-                  <th>Best LLM</th>
-                  <th>Score</th>
-                  <th>Group A Human GPs</th>
-                  <th>Group B Human GPs</th>
-                  <th>Group C Human GPs</th>
-                  <th>Key Takeaway</th>
+                  <th>Human Physicians / Models</th>
+                  <th>MCQ Test Set<br>(accuracy %)</th>
+                  <th>Clinical Case Test Set<br>(score)</th>
+                  <th>AI Patient Test Set<br>(score)</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>MCQ Test Set</strong></td>
-                  <td>DeepSeek-R1</td>
-                  <td>82.74</td>
+                  <td><strong>Group A</strong></td>
                   <td>62.97</td>
-                  <td>62.14</td>
-                  <td>68.32</td>
-                  <td>LLMs lead clearly on static knowledge tasks.</td>
-                </tr>
-                <tr>
-                  <td><strong>Clinical Case Test Set</strong></td>
-                  <td>DeepSeek-R1</td>
-                  <td>81.80</td>
                   <td>87.10</td>
-                  <td>85.77</td>
-                  <td>81.16</td>
-                  <td>The best model approaches junior GPs but trails experienced clinicians.</td>
+                  <td>77.75</td>
                 </tr>
                 <tr>
-                  <td><strong>AI Patient Test Set</strong></td>
-                  <td>o1-preview</td>
-                  <td>55.20</td>
-                  <td>77.75</td>
+                  <td><strong>Group B</strong></td>
+                  <td>62.39</td>
+                  <td>85.77</td>
                   <td>76.59</td>
+                </tr>
+                <tr>
+                  <td><strong>Group C</strong></td>
+                  <td>68.32</td>
+                  <td>81.16</td>
                   <td>61.30</td>
-                  <td>Interactive history taking remains the largest gap between LLMs and humans.</td>
+                </tr>
+                <tr>
+                  <td><strong>GPT-4o</strong></td>
+                  <td>71.80</td>
+                  <td>76.02</td>
+                  <td>51.09</td>
+                </tr>
+                <tr>
+                  <td><strong>GPT-4-turbo</strong></td>
+                  <td>60.79</td>
+                  <td>71.07</td>
+                  <td>42.06</td>
+                </tr>
+                <tr>
+                  <td><strong>o1-preview</strong></td>
+                  <td>79.16</td>
+                  <td>74.24</td>
+                  <td>55.20</td>
+                </tr>
+                <tr>
+                  <td><strong>Gemini-1.5-pro</strong></td>
+                  <td>68.22</td>
+                  <td>76.46</td>
+                  <td>47.10</td>
+                </tr>
+                <tr>
+                  <td><strong>Qwen2.5-7B-Instruct</strong></td>
+                  <td>69.63</td>
+                  <td>68.63</td>
+                  <td>37.13</td>
+                </tr>
+                <tr>
+                  <td><strong>Qwen2.5-72B-Instruct</strong></td>
+                  <td>78.13</td>
+                  <td>72.79</td>
+                  <td>44.01</td>
+                </tr>
+                <tr>
+                  <td><strong>Claude-3.5-Sonnet</strong></td>
+                  <td>58.13</td>
+                  <td>73.42</td>
+                  <td>53.67</td>
+                </tr>
+                <tr>
+                  <td><strong>DeepSeek-V3</strong></td>
+                  <td>75.80</td>
+                  <td>70.90</td>
+                  <td>37.14</td>
+                </tr>
+                <tr>
+                  <td><strong>DeepSeek-R1</strong></td>
+                  <td>82.74</td>
+                  <td>81.80</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td><strong>HuatuoGPT-o1-7B</strong></td>
+                  <td>73.95</td>
+                  <td>70.35</td>
+                  <td>36.33</td>
                 </tr>
               </tbody>
             </table>
           </div>
+          <div style="height: 16px;"></div>
+          <p style="text-align: justify;">
+            <strong>Overall results of human physicians and LLMs on GPBench.</strong> 
+          </p>
         </div>
 
         <div style="height: 30px;"></div>
