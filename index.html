@@ -244,10 +244,17 @@
                 </a>
               </span>
               <span class="link-block">
+                <a href="https://github.com/AIPrimaryCare/gpbench_code"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-open-access"></i></span>
+                  <span>DataSet</span>
+                </a>
+              </span>
+              <span class="link-block">
                 <a href="https://doi.org/10.1038/s41467-026-71622-6"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="ai ai-open-access"></i></span>
-                  <span>Nature</span>
+                  <span>Nature Communications</span>
                 </a>
               </span>
             </div>
@@ -848,150 +855,92 @@
 
         <div class="content has-text-justified">
           <p class="description">
-            To better understand why LLMs fall short in general practice, we further analyzed their responses on the
-            <strong>Clinical Case Test Set</strong>. Instead of only reporting aggregate scores, we reviewed model-generated
-            diagnostic and treatment outputs and categorized recurring deficiency patterns. This analysis reveals that the
-            limitations of current LLMs are not merely reflected in lower scores, but in concrete clinical failure modes
-            related to diagnosis, treatment planning, health management, and medical safety.
+            Beyond aggregate scores, we analyzed LLM responses on the <strong>Clinical Case Test Set</strong>
+            to identify recurring competency gaps in real-world general practice scenarios. The analysis reveals
+            that current LLMs still struggle to transform medical knowledge into safe, complete, and context-sensitive
+            clinical decisions.
           </p>
 
-          <div class="columns is-multiline" style="margin-top: 1rem;">
+          <div class="columns is-multiline" style="margin-top: 1.5rem;">
 
+            <!-- Card 1 -->
             <div class="column is-6">
-              <div class="soft-box">
-                <h4 class="title is-5">1. Incomplete Diagnostic Reasoning</h4>
+              <div class="soft-box" style="height: 100%;">
+                <h4 class="title is-5">1. Diagnostic Deficiencies</h4>
                 <p>
-                  LLMs often failed to construct a sufficiently complete diagnostic reasoning chain. A major issue was the
-                  lack of accurate <strong>disease grading, staging, and risk stratification</strong>, especially in diseases
-                  such as hypertension, coronary artery disease, and chronic kidney disease.
+                  LLMs frequently failed to construct complete diagnostic reasoning chains, especially when cases
+                  required disease classification, multi-system assessment, or recognition of uncommon presentations.
                 </p>
-                <p>
-                  In several cases, models provided only broad diagnostic labels without specifying clinically necessary
-                  severity levels, functional classifications, or risk groups. Some models also produced incorrect staging,
-                  which may directly affect subsequent management decisions.
-                </p>
+                <ul>
+                  <li>Lack of accurate disease grading, staging, and risk stratification.</li>
+                  <li>Hallucinated disease grading or staging unsupported by clinical guidelines.</li>
+                  <li>Blind spots in identifying comorbidities and complications.</li>
+                  <li>Insufficient recognition of acute and critical conditions.</li>
+                  <li>Limited ability to diagnose rare diseases.</li>
+                </ul>
               </div>
             </div>
 
+            <!-- Card 2 -->
             <div class="column is-6">
-              <div class="soft-box">
-                <h4 class="title is-5">2. Hallucinated Clinical Classification</h4>
+              <div class="soft-box" style="height: 100%;">
+                <h4 class="title is-5">2. Treatment Decision-making Deficiencies</h4>
                 <p>
-                  Beyond omission, LLMs sometimes fabricated disease grading or staging without support from clinical
-                  guidelines or evidence. This type of hallucination appeared across multiple disease scenarios, including
-                  pneumonia, diabetes, gouty arthritis, osteoarthritis, pneumothorax, and acute appendicitis.
+                  Treatment planning remained a major weakness. Even when models produced broadly correct diagnoses,
+                  their management plans were often incomplete, unsafe, or insufficiently actionable for clinical use.
                 </p>
-                <p>
-                  Such errors are particularly concerning in general practice because diagnostic labels are not only
-                  descriptive; they also guide referral decisions, urgency assessment, and treatment planning.
-                </p>
+                <ul>
+                  <li>Lack of clear treatment goals, such as blood pressure or glucose control targets.</li>
+                  <li>Pharmacotherapy risks, including omission of core drugs and unsafe medication choices.</li>
+                  <li>Blind spots in non-pharmacological interventions, such as dialysis, surgery, or interventional therapy.</li>
+                  <li>Insufficient standardization in acute and critical illness management.</li>
+                </ul>
               </div>
             </div>
 
+            <!-- Card 3 -->
             <div class="column is-6">
-              <div class="soft-box">
-                <h4 class="title is-5">3. Missed Comorbidities and Complications</h4>
+              <div class="soft-box" style="height: 100%;">
+                <h4 class="title is-5">3. Pharmacotherapy Safety Risks</h4>
                 <p>
-                  Current LLMs showed limited ability to systematically screen for comorbidities and complications.
-                  This was especially evident in metabolic and cardiovascular disease scenarios, where important diagnostic
-                  elements were frequently omitted.
+                  Medication-related errors were a particularly important source of clinical risk. These problems suggest
+                  that current LLMs do not yet reliably account for patient-specific conditions, disease stages, or drug
+                  safety constraints.
                 </p>
-                <p>
-                  In some cases, models failed to identify relevant comorbidities; in others, they incorrectly inferred
-                  complications that were not supported by the patient information. These failures suggest that LLMs still
-                  lack robust multi-system clinical reasoning.
-                </p>
+                <ul>
+                  <li>Omission of core drugs required for specific diseases.</li>
+                  <li>Neglect of drug interaction contraindications.</li>
+                  <li>Missing or incorrect drug dosage guidance.</li>
+                  <li>Improper control of medication indications, especially in patients with comorbid conditions.</li>
+                </ul>
               </div>
             </div>
 
+            <!-- Card 4 -->
             <div class="column is-6">
-              <div class="soft-box">
-                <h4 class="title is-5">4. Weak Recognition of Acute, Critical, and Rare Conditions</h4>
+              <div class="soft-box" style="height: 100%;">
+                <h4 class="title is-5">4. Health Management and Ethical Risks</h4>
                 <p>
-                  LLMs also showed deficiencies in recognizing time-sensitive or life-threatening conditions. Although such
-                  errors were less frequent than other deficiency types, they carry high clinical risk because delayed
-                  recognition may lead to inappropriate triage or referral.
+                  Although LLMs often generated fluent health education advice, their recommendations were frequently
+                  principle-based rather than concrete, individualized, and clinically actionable.
                 </p>
-                <p>
-                  The models also struggled with rare diseases. For example, in a fever case involving scrub typhus, most
-                  models failed to provide an accurate diagnosis, reflecting limited robustness when facing uncommon but
-                  clinically important presentations.
-                </p>
-              </div>
-            </div>
-
-            <div class="column is-6">
-              <div class="soft-box">
-                <h4 class="title is-5">5. Insufficient Treatment Planning</h4>
-                <p>
-                  Treatment decision-making remained a major weakness. LLM-generated plans often lacked clearly defined
-                  <strong>therapeutic goals</strong>, particularly for chronic diseases such as hypertension and diabetes.
-                  For example, models frequently failed to specify concrete blood pressure or blood glucose control targets.
-                </p>
-                <p>
-                  Even when the diagnosis was broadly correct, the treatment plan was often not sufficiently actionable for
-                  clinical use, limiting its practical value in routine general practice.
-                </p>
-              </div>
-            </div>
-
-            <div class="column is-6">
-              <div class="soft-box">
-                <h4 class="title is-5">6. Pharmacotherapy and Safety Risks</h4>
-                <p>
-                  LLMs exhibited multiple pharmacotherapy-related risks, including omission of core drugs, insufficient
-                  dosage guidance, neglect of drug interaction contraindications, and improper control of medication
-                  indications.
-                </p>
-                <p>
-                  These issues indicate that current LLMs do not reliably account for patient-specific factors such as renal
-                  function, disease stage, acute-phase management, or medication safety constraints. This remains a critical
-                  barrier to autonomous clinical deployment.
-                </p>
-              </div>
-            </div>
-
-            <div class="column is-6">
-              <div class="soft-box">
-                <h4 class="title is-5">7. Blind Spots in Non-pharmacological and Critical Care Management</h4>
-                <p>
-                  LLMs tended to focus on medication-based recommendations while underrepresenting non-pharmacological
-                  interventions, such as interventional therapies, dialysis planning, surgical indications, or other
-                  stage-specific management options.
-                </p>
-                <p>
-                  In acute and critical conditions, some models also failed to follow standardized clinical management
-                  procedures or omitted essential steps, suggesting limited alignment with real-world clinical protocols.
-                </p>
-              </div>
-            </div>
-
-            <div class="column is-6">
-              <div class="soft-box">
-                <h4 class="title is-5">8. Limited Health Management and Ethical Awareness</h4>
-                <p>
-                  Although LLMs often produced fluent health education advice, the recommendations were frequently broad
-                  and principle-based rather than concrete and actionable. For example, models might recommend a
-                  sodium-restricted diet without specifying practical intake targets.
-                </p>
-                <p>
-                  In addition, model outputs revealed potential medical ethical risks, including overtreatment,
-                  overdiagnosis, misdiagnosis, and missed diagnosis. These risks show that polite language or well-structured
-                  responses should not be mistaken for reliable clinical professionalism.
-                </p>
+                <ul>
+                  <li>Health education advice was often too general and lacked practical guidance.</li>
+                  <li>Models showed limited awareness of broader care responsibilities beyond diagnosis and treatment.</li>
+                  <li>Ethical risks mainly appeared as overtreatment, misdiagnosis, or missed diagnosis.</li>
+                  <li>Surface-level fluency did not necessarily reflect reliable clinical professionalism.</li>
+                </ul>
               </div>
             </div>
 
           </div>
 
-          <div class="highlight-note">
+          <div class="highlight-note" style="margin-top: 1.5rem;">
             <p>
-              <strong>Key takeaway.</strong> The competency analysis shows that current LLMs do not simply lack isolated
-              medical facts. Their main limitation lies in transforming medical knowledge into safe, complete, and
-              context-sensitive general practice decisions. They struggle with disease stratification, complication screening,
-              treatment goal setting, medication safety, non-pharmacological management, and broader clinical responsibility.
-              These findings support the conclusion that current LLMs are not suitable for autonomous deployment in clinical
-              general practice and require continuous human oversight.
+              <strong>Key takeaway.</strong> The competency analysis shows that the main limitation of current LLMs
+              is not simply insufficient medical knowledge. Rather, they struggle with the practical competencies
+              required in general practice, including diagnostic stratification, complication screening, treatment goal
+              setting, medication safety, non-pharmacological management, and responsible patient-centered care.
             </p>
           </div>
 
