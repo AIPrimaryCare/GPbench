@@ -1,468 +1,604 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GPBench | Evaluating Clinical Competencies of Large Language Models</title>
-  <meta name="description" content="GPBench is a benchmark for evaluating large language models as general practitioners." />
+  <meta charset="utf-8">
+  <meta name="description"
+        content="GPBench is a competency-grounded benchmark for evaluating large language models as general practitioners.">
+  <meta name="keywords" content="Large Language Models, Benchmark, General Practitioners, Primary Care, Medical AI">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GPBench: Evaluating Clinical Competencies of Large Language Models with a General Practice Benchmark</title>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
   <style>
-    :root{
-      --bg:#f6f2ea;
-      --paper:rgba(255,255,255,.86);
-      --ink:#162331;
-      --muted:#5d6772;
-      --line:rgba(22,35,49,.1);
-      --brand:#0f5d73;
-      --brand-soft:#d9edf1;
-      --accent:#c96f3b;
-      --shadow:0 18px 50px rgba(22,35,49,.08);
-      --r-xl:28px;
-      --r-lg:20px;
-      --r-md:14px;
-      --w:1160px;
+    .description {
+      font-size: 1.18rem;
+      text-align: justify;
     }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      color:var(--ink);
-      font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif;
-      line-height:1.65;
-      background:
-        radial-gradient(circle at top left, rgba(15,93,115,.10), transparent 28%),
-        radial-gradient(circle at top right, rgba(201,111,59,.10), transparent 24%),
-        linear-gradient(180deg,#f7f4ec 0%,#f3efe6 52%,#f8f4ed 100%);
+
+    .section-anchor {
+      scroll-margin-top: 32px;
     }
-    a{text-decoration:none;color:inherit}
-    .wrap{width:min(calc(100% - 32px),var(--w));margin:0 auto}
-    .topbar{
-      position:sticky;top:0;z-index:10;
-      backdrop-filter:blur(16px);
-      background:rgba(246,242,234,.8);
-      border-bottom:1px solid var(--line);
+
+    .soft-box {
+      padding: 1.25rem 1.25rem;
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      background: #fbfbfb;
+      height: 100%;
     }
-    .nav{
-      min-height:76px;
-      display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+
+    .soft-box h4 {
+      margin-bottom: 0.6rem;
     }
-    .brand small{
-      display:block;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      color:var(--brand);
-      font-weight:700;
-      font-size:.78rem;
+
+    .metric-card {
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      padding: 1rem;
+      background: #fcfcfc;
+      height: 100%;
     }
-    .brand strong{font-size:1.15rem}
-    .navlinks{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:.95rem}
-    .hero{padding:72px 0 34px}
-    .hero-grid,.grid-2,.grid-3,.result-grid{display:grid;gap:18px}
-    .hero-grid{grid-template-columns:1.3fr .9fr}
-    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .card,.hero-main,.hero-side,.scorebox,.callout{
-      background:var(--paper);
-      border:1px solid rgba(255,255,255,.72);
-      border-radius:var(--r-xl);
-      box-shadow:var(--shadow);
+
+    .metric-card .heading {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
-    .hero-main{padding:34px}
-    .hero-side{padding:24px;display:grid;gap:14px}
-    .eyebrow{
-      display:inline-block;
-      padding:8px 12px;
-      border-radius:999px;
-      background:var(--brand-soft);
-      color:var(--brand);
-      font-size:.8rem;
-      font-weight:700;
-      letter-spacing:.1em;
-      text-transform:uppercase;
+
+    .metric-card .value {
+      font-size: 1.9rem;
+      font-weight: 700;
+      line-height: 1.1;
     }
-    h1,h2,h3,h4,p{margin:0}
-    h1{
-      margin-top:18px;
-      font-size:clamp(2.25rem,5vw,4rem);
-      line-height:1.08;
-      letter-spacing:-.03em;
-      max-width:12ch;
+
+    .highlight-note {
+      border-left: 4px solid #3273dc;
+      padding: 1rem 1.2rem;
+      background: #f7faff;
+      margin-top: 1rem;
     }
-    .sub{margin-top:18px;color:var(--muted);max-width:66ch}
-    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
-    .btn{
-      min-height:46px;padding:0 18px;border-radius:999px;
-      display:inline-flex;align-items:center;justify-content:center;
-      font-weight:700;
+
+    .table-wrap {
+      overflow-x: auto;
+      border-top: 2px solid black;
+      border-bottom: 2px solid black;
     }
-    .btn.primary{background:var(--brand);color:#fff}
-    .btn.ghost{background:rgba(255,255,255,.76);border:1px solid var(--line)}
-    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
-    .stat,.mini,.pill,.panel{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.76);
-      border-radius:var(--r-md);
-    }
-    .stat{padding:16px}
-    .stat span{display:block;color:var(--muted);font-size:.82rem;text-transform:uppercase;letter-spacing:.08em}
-    .stat strong{display:block;margin-top:8px;font-size:1.55rem}
-    section{padding:28px 0}
-    .head{margin-bottom:20px}
-    .head small{
-      color:var(--brand);
-      text-transform:uppercase;
-      letter-spacing:.14em;
-      font-size:.8rem;
-      font-weight:700;
-    }
-    .head h2{
-      margin-top:10px;
-      font-size:clamp(1.8rem,3vw,2.65rem);
-      line-height:1.12;
-      letter-spacing:-.03em;
-    }
-    .head p{margin-top:12px;color:var(--muted);max-width:76ch}
-    .card,.scorebox,.callout{padding:24px;border-radius:var(--r-lg)}
-    .card p,.card li,.muted{color:var(--muted)}
-    .list{margin:0;padding-left:18px}
-    .list li+li{margin-top:8px}
-    .pillbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-    .pill{padding:10px 12px;font-size:.9rem;color:var(--muted)}
-    .flow{display:grid;gap:14px;margin-top:18px}
-    .step{
-      display:grid;grid-template-columns:54px 1fr;gap:14px;
-      padding:16px;border:1px solid var(--line);
-      background:rgba(255,255,255,.76);border-radius:var(--r-md);
-    }
-    .num{
-      width:54px;height:54px;border-radius:16px;
-      display:flex;align-items:center;justify-content:center;
-      background:linear-gradient(180deg,var(--brand),#0c4454);
-      color:#fff;font-weight:800;
-    }
-    .bench{
-      display:grid;grid-template-columns:1.15fr .85fr;gap:18px;
-    }
-    .figure{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .panel{padding:16px;min-height:118px;background:linear-gradient(180deg,rgba(15,93,115,.08),rgba(255,255,255,.84))}
-    .panel.accent{background:linear-gradient(180deg,rgba(201,111,59,.10),rgba(255,255,255,.86))}
-    .indicators,.models{display:grid;gap:12px}
-    .indicators{grid-template-columns:repeat(2,1fr);margin-top:16px}
-    .models{grid-template-columns:repeat(2,1fr);margin-top:16px}
-    .mini{padding:14px}
-    .mini b{display:block}
-    .result-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .scorebox{display:grid;gap:16px}
-    .barlist{display:grid;gap:12px}
-    .row{display:grid;grid-template-columns:190px 1fr 58px;gap:12px;align-items:center}
-    .track{height:12px;border-radius:999px;background:rgba(22,35,49,.08);overflow:hidden}
-    .fill{height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--brand),#39a1b4)}
-    .fill.human{background:linear-gradient(90deg,var(--accent),#e49a67)}
-    .value{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
-    .callout{
-      background:linear-gradient(180deg,rgba(15,93,115,.08),rgba(255,255,255,.92));
-    }
-    .footer{padding:34px 0 54px}
-    .footerbox{
-      padding:24px;border-radius:var(--r-xl);
-      background:rgba(22,35,49,.95);color:rgba(255,255,255,.88);
-      box-shadow:var(--shadow);
-    }
-    .footerbox .actions{margin-top:16px}
-    .footerbox .btn{background:rgba(255,255,255,.08);color:#fff}
-    @media (max-width:1080px){
-      .hero-grid,.bench,.result-grid{grid-template-columns:1fr}
-      .grid-3,.grid-2,.figure,.indicators,.models,.stats{grid-template-columns:1fr 1fr}
-    }
-    @media (max-width:760px){
-      .hero{padding-top:42px}
-      .hero-main,.hero-side,.card,.scorebox,.callout{padding:20px}
-      .grid-3,.grid-2,.figure,.indicators,.models,.stats{grid-template-columns:1fr}
-      .row{grid-template-columns:1fr;gap:8px}
-      .value{text-align:left}
+
+    table td, table th {
+      vertical-align: top;
     }
   </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="wrap nav">
-      <a class="brand" href="#top">
-        <small>Nature Communications 2026</small>
-        <strong>GPBench</strong>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">GPBench: Evaluating Clinical Competencies of Large Language Models with a General Practice Benchmark</h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Zheqing Li<sup>1</sup><sup>∗</sup>,</span>
+            <span class="author-block">Yiying Yang<sup>2</sup><sup>∗</sup>,</span>
+            <span class="author-block">Jiping Lang<sup>1</sup><sup>∗</sup>,</span>
+            <span class="author-block"><a href="https://cswhjiang.github.io/">Wenhao Jiang</a><sup>2</sup><sup>∗</sup><sup>†</sup><sup>‡</sup>,</span>
+            <span class="author-block">Yuhang Zhao<sup>2</sup>,</span>
+            <span class="author-block">Shuang Li<sup>1</sup>,</span>
+            <span class="author-block">Dingqian Wang<sup>2</sup>,</span>
+            <span class="author-block">Zhu Lin<sup>1</sup>,</span>
+            <span class="author-block">Xuanna Li<sup>1</sup>,</span>
+            <span class="author-block">Yuze Tang<sup>1</sup>,</span>
+            <span class="author-block">Jiexian Qiu<sup>3</sup>,</span>
+            <span class="author-block">Xiaolin Lu<sup>3</sup>,</span>
+            <span class="author-block">Hongji Yu<sup>3</sup>,</span>
+            <span class="author-block">Shuang Chen<sup>1</sup>,</span>
+            <span class="author-block">Yuhua Bi<sup>1</sup>,</span>
+            <span class="author-block">Xiaofei Zeng<sup>1</sup>,</span>
+            <span class="author-block">Yixian Chen<sup>4</sup>,</span>
+            <span class="author-block">Junrong Chen<sup>1</sup><sup>†</sup>,</span>
+            <span class="author-block">Lin Yao<sup>1</sup><sup>†</sup><sup>‡</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>The Sixth Affiliated Hospital of Sun Yat-sen University,</span>
+            <span class="author-block"><sup>2</sup>Guangdong Laboratory of Artificial Intelligence and Digital Economy (SZ),</span>
+            <span class="author-block"><sup>3</sup>Xinyi People’s Hospital,</span>
+            <span class="author-block"><sup>4</sup>School of Intelligent Systems Engineering, Sun Yat-sen University</span>
+            <span class="author-block"><sup>∗</sup>Co-first author. <sup>†</sup>Corresponding authors. <sup>‡</sup>Co-lead the project</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="./llm_gp_nc_revision_2_main_text_4.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="./supplementary_information.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-book"></i></span>
+                  <span>Supplementary</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/AIPrimaryCare/gpbench_code"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://doi.org/10.1038/s41467-026-71622-6"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-open-access"></i></span>
+                  <span>Nature</span>
+                </a>
+              </span>
+            </div>
+          </div>
+
+          <div class="columns is-centered" style="margin-top: 1.5rem;">
+            <div class="column is-3">
+              <div class="metric-card">
+                <div class="heading">Evaluated LLMs</div>
+                <div class="value">10</div>
+              </div>
+            </div>
+            <div class="column is-3">
+              <div class="metric-card">
+                <div class="heading">Clinical Cases</div>
+                <div class="value">70</div>
+              </div>
+            </div>
+            <div class="column is-3">
+              <div class="metric-card">
+                <div class="heading">AI Patient Dialogues</div>
+                <div class="value">70</div>
+              </div>
+            </div>
+            <div class="column is-3">
+              <div class="metric-card">
+                <div class="heading">MCQ Questions</div>
+                <div class="value">3,661</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero overview section-anchor" id="problem">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="title is-2 has-text-centered">Problem</h2>
+      <p class="description">
+        Large language models have shown promising performance in medical question answering, yet most existing evaluations remain heavily centered on exam-style benchmarks.
+        This is not enough for general practice. The daily work of general practitioners requires broad clinical knowledge, open-ended diagnostic reasoning,
+        longitudinal health management, referral judgment, patient education, and interactive history taking. A model that performs well on multiple-choice questions
+        may still fail in realistic outpatient scenarios where incomplete information, multimorbidity, and communication are central.
+      </p>
+      <p class="description">
+        To address this gap, the revised GPBench paper asks a more practical question: <strong>how close are current LLMs to the real competencies of human general practitioners?</strong>
+        Rather than evaluating only static knowledge, GPBench examines whether models can handle open-ended clinical cases and simulated doctor-patient interactions, and compares their performance directly
+        with human GPs at different experience levels.
+      </p>
+
+      <div class="columns is-centered" style="margin-top: 1.5rem;">
+        <div class="column">
+          <div class="soft-box">
+            <h4 class="title is-5">Beyond exam-style accuracy</h4>
+            <p>Strong factual recall does not guarantee safe or complete reasoning in real-world primary care workflows.</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="soft-box">
+            <h4 class="title is-5">General practice is holistic</h4>
+            <p>GP work spans diagnosis, treatment, prevention, referral, communication, and long-term management.</p>
+          </div>
+        </div>
+        <div class="column">
+          <div class="soft-box">
+            <h4 class="title is-5">Interaction matters</h4>
+            <p>History taking and outpatient decision-making require dynamic questioning rather than one-shot answer generation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-anchor" id="gpbench">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <h2 class="title is-2 has-text-centered">GPBench</h2>
+        <div class="content has-text-justified">
+          <p class="description">
+            GPBench is a competency-grounded benchmark designed specifically for general practice. It integrates a general practice competency model with three complementary evaluation settings:
+            the <strong>MCQ Test Set</strong> for foundational knowledge, the <strong>Clinical Case Test Set</strong> for open-ended reasoning on real outpatient cases, and the
+            <strong>AI Patient Test Set</strong> for interactive history taking through simulated consultations.
+          </p>
+          <p class="description">
+            The benchmark is built from open-source questions and de-identified outpatient medical records, and covers eight major chronic diseases and ten common symptoms encountered in general practice.
+            Expert clinicians established the ground truth and scoring rubrics. The revised study emphasizes that benchmarking should mirror the actual responsibilities of general practitioners rather than only exam performance.
+          </p>
+
+          <div style="height: 20px;"></div>
+
+          <div class="columns">
+            <div class="column">
+              <div class="soft-box">
+                <h4 class="title is-5">MCQ Test Set</h4>
+                <p>3,661 competency-tagged multiple-choice questions for evaluating foundational medical knowledge and theory.</p>
+              </div>
+            </div>
+            <div class="column">
+              <div class="soft-box">
+                <h4 class="title is-5">Clinical Case Test Set</h4>
+                <p>70 real outpatient cases scored for diagnosis, referral, treatment planning, and health education.</p>
+              </div>
+            </div>
+            <div class="column">
+              <div class="soft-box">
+                <h4 class="title is-5">AI Patient Test Set</h4>
+                <p>70 simulated consultations assessing interactive medical history taking and downstream clinical decisions.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="highlight-note">
+            <p>
+              <strong>Competency framework.</strong> GPBench evaluates six primary indicators:
+              <strong>Basic Medical Knowledge</strong>, <strong>Diagnosis</strong>, <strong>Decision-making</strong>,
+              <strong>Health Management</strong>, <strong>Health Economics</strong>, and
+              <strong>Medical Ethics and Humanities</strong>, with 14 secondary indicators in the revised paper.
+            </p>
+          </div>
+
+          <div style="height: 20px;"></div>
+
+          <figure>
+            <img id="overview" src="./static/images/fig1_overview_0314_v3.png" alt="overview" style="height: 100%;">
+            <figcaption style="text-align: justify;">
+              <strong>Overview of GPBench.</strong> The benchmark combines competency-grounded evaluation with three testing formats:
+              objective MCQs, open-ended clinical cases, and interactive AI-patient consultations, enabling a more realistic assessment of LLM performance in general practice.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-anchor" id="evaluation">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <h2 class="title is-2 has-text-centered">Evaluation</h2>
+        <div class="content has-text-justified">
+          <p class="description">
+            The revised paper evaluates <strong>10 representative LLMs</strong>, including general-purpose and reasoning-oriented systems, and compares them against
+            <strong>human general practitioners</strong> grouped by clinical experience. MCQ performance is measured by accuracy, while the Clinical Case Test Set and AI Patient Test Set are scored by expert GPs using predefined rubrics.
+          </p>
+
+          <div class="columns">
+            <div class="column">
+              <div class="soft-box">
+                <h4 class="title is-5">LLM evaluation</h4>
+                <p>Models include GPT-4o, GPT-4-turbo, o1-preview, Gemini-1.5-pro, Claude-3.5-Sonnet, Qwen2.5, DeepSeek, and HuatuoGPT variants.</p>
+              </div>
+            </div>
+            <div class="column">
+              <div class="soft-box">
+                <h4 class="title is-5">Human baseline</h4>
+                <p>Three GP groups were evaluated: Group A with more than 10 years of experience, Group B with 5-10 years, and Group C with less than 5 years.</p>
+              </div>
+            </div>
+            <div class="column">
+              <div class="soft-box">
+                <h4 class="title is-5">Scoring design</h4>
+                <p>200 stratified MCQs were sampled for human comparison, while all 70 clinical cases and 70 AI-patient consultations were evaluated for both humans and models.</p>
+              </div>
+            </div>
+          </div>
+
+          <div style="height: 24px;"></div>
+
+          <table style="border-collapse: collapse; border-top: 2px solid black; border-bottom: 2px solid black;">
+            <thead>
+              <tr>
+                <th>Evaluation Setting</th>
+                <th>Format</th>
+                <th>What It Measures</th>
+                <th>Scoring</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>MCQ Test Set</strong></td>
+                <td>Objective questions</td>
+                <td>Foundational knowledge across competency indicators</td>
+                <td>Accuracy</td>
+              </tr>
+              <tr>
+                <td><strong>Clinical Case Test Set</strong></td>
+                <td>Open-ended generation</td>
+                <td>Diagnosis, referral, treatment planning, health education</td>
+                <td>Expert rubric-based scoring</td>
+              </tr>
+              <tr>
+                <td><strong>AI Patient Test Set</strong></td>
+                <td>Interactive dialogue</td>
+                <td>Medical history taking plus downstream diagnostic and treatment competence</td>
+                <td>Expert rubric-based scoring</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-anchor" id="results">
+  <div class="container is-max-desktop">
+    <div class="column is-centered">
+      <div class="column is-full">
+        <h2 class="title is-2 has-text-centered">Results</h2>
+
+        <div class="content has-text-justified">
+          <p class="description">
+            The revised study shows a consistent pattern: <strong>LLMs can surpass human general practitioners on static multiple-choice knowledge tasks, but they still lag behind human physicians in realistic clinical reasoning and interactive history taking.</strong>
+            The strongest overall model is <strong>DeepSeek-R1</strong> on MCQ and clinical case evaluation, while <strong>o1-preview</strong> performs best on the AI Patient Test Set.
+          </p>
+        </div>
+
+        <div class="content has-text-centered">
+          <p style="font-size: 1.25rem;">
+            Comparison of top-level performance on the three benchmark settings, including human GP baselines.
+          </p>
+          <div class="table-wrap">
+            <table style="width: 100%; white-space: nowrap;">
+              <thead>
+                <tr>
+                  <th>Setting</th>
+                  <th>Best LLM</th>
+                  <th>Score</th>
+                  <th>Group A Human GPs</th>
+                  <th>Group B Human GPs</th>
+                  <th>Group C Human GPs</th>
+                  <th>Key Takeaway</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>MCQ Test Set</strong></td>
+                  <td>DeepSeek-R1</td>
+                  <td>82.74</td>
+                  <td>62.97</td>
+                  <td>62.14</td>
+                  <td>68.32</td>
+                  <td>LLMs lead clearly on static knowledge tasks.</td>
+                </tr>
+                <tr>
+                  <td><strong>Clinical Case Test Set</strong></td>
+                  <td>DeepSeek-R1</td>
+                  <td>81.80</td>
+                  <td>87.10</td>
+                  <td>85.77</td>
+                  <td>81.16</td>
+                  <td>The best model approaches junior GPs but trails experienced clinicians.</td>
+                </tr>
+                <tr>
+                  <td><strong>AI Patient Test Set</strong></td>
+                  <td>o1-preview</td>
+                  <td>55.20</td>
+                  <td>77.75</td>
+                  <td>76.59</td>
+                  <td>61.30</td>
+                  <td>Interactive history taking remains the largest gap between LLMs and humans.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div style="height: 30px;"></div>
+
+        <div class="content has-text-centered">
+          <p style="font-size: 1.25rem;">
+            Representative model scores on the <strong>MCQ Test Set</strong>.
+          </p>
+          <div class="table-wrap">
+            <table style="width: 100%; white-space: nowrap;">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Weighted Accuracy</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>DeepSeek-R1</strong></td><td>82.74</td></tr>
+                <tr><td><strong>o1-preview</strong></td><td>79.16</td></tr>
+                <tr><td><strong>Qwen2.5-72B-Instruct</strong></td><td>78.13</td></tr>
+                <tr><td><strong>DeepSeek-V3</strong></td><td>76.13</td></tr>
+                <tr><td><strong>GPT-4o</strong></td><td>73.76</td></tr>
+                <tr><td><strong>HuatuoGPT-o1-7B</strong></td><td>72.40</td></tr>
+                <tr><td><strong>Gemini-1.5-pro</strong></td><td>70.11</td></tr>
+                <tr><td><strong>Qwen2.5-7B-Instruct</strong></td><td>68.59</td></tr>
+                <tr><td><strong>Claude-3.5-Sonnet</strong></td><td>61.76</td></tr>
+                <tr><td><strong>GPT-4-turbo</strong></td><td>60.38</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div style="height: 30px;"></div>
+
+        <div class="content has-text-centered">
+          <p style="font-size: 1.25rem;">
+            Representative model scores on the <strong>Clinical Case Test Set</strong>.
+          </p>
+          <div class="table-wrap">
+            <table style="width: 100%; white-space: nowrap;">
+              <thead>
+                <tr>
+                  <th>Model / Human Group</th>
+                  <th>Overall Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Group A Human GPs</strong></td><td>87.10</td></tr>
+                <tr><td><strong>Group B Human GPs</strong></td><td>85.77</td></tr>
+                <tr><td><strong>DeepSeek-R1</strong></td><td>81.80</td></tr>
+                <tr><td><strong>Group C Human GPs</strong></td><td>81.16</td></tr>
+                <tr><td><strong>Gemini-1.5-pro</strong></td><td>76.46</td></tr>
+                <tr><td><strong>GPT-4o</strong></td><td>76.02</td></tr>
+                <tr><td><strong>Claude-3.5-Sonnet</strong></td><td>74.34</td></tr>
+                <tr><td><strong>o1-preview</strong></td><td>73.17</td></tr>
+                <tr><td><strong>Qwen2.5-72B-Instruct</strong></td><td>72.52</td></tr>
+                <tr><td><strong>DeepSeek-V3</strong></td><td>69.21</td></tr>
+                <tr><td><strong>GPT-4-turbo</strong></td><td>69.05</td></tr>
+                <tr><td><strong>HuatuoGPT-o1-7B</strong></td><td>65.25</td></tr>
+                <tr><td><strong>Qwen2.5-7B-Instruct</strong></td><td>64.46</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div style="height: 30px;"></div>
+
+        <div class="content has-text-centered">
+          <p style="font-size: 1.25rem;">
+            Representative model scores on the <strong>AI Patient Test Set</strong>.
+          </p>
+          <div class="table-wrap">
+            <table style="width: 100%; white-space: nowrap;">
+              <thead>
+                <tr>
+                  <th>Model / Human Group</th>
+                  <th>Overall Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Group A Human GPs</strong></td><td>77.75</td></tr>
+                <tr><td><strong>Group B Human GPs</strong></td><td>76.59</td></tr>
+                <tr><td><strong>Group C Human GPs</strong></td><td>61.30</td></tr>
+                <tr><td><strong>o1-preview</strong></td><td>55.20</td></tr>
+                <tr><td><strong>Claude-3.5-Sonnet</strong></td><td>53.67</td></tr>
+                <tr><td><strong>GPT-4o</strong></td><td>51.09</td></tr>
+                <tr><td><strong>Gemini-1.5-pro</strong></td><td>49.57</td></tr>
+                <tr><td><strong>Qwen2.5-72B-Instruct</strong></td><td>46.18</td></tr>
+                <tr><td><strong>GPT-4-turbo</strong></td><td>44.90</td></tr>
+                <tr><td><strong>Qwen2.5-7B-Instruct</strong></td><td>40.22</td></tr>
+                <tr><td><strong>DeepSeek-V3</strong></td><td>39.89</td></tr>
+                <tr><td><strong>HuatuoGPT-o1-7B</strong></td><td>36.87</td></tr>
+                <tr><td><strong>DeepSeek-R1</strong></td><td>Excluded</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="height: 20px;"></div>
+          <p style="text-align: justify;">
+            <strong>Note.</strong> DeepSeek-R1 was excluded from the AI Patient Test Set because, as a reasoning-oriented model,
+            it frequently failed to satisfy the dialogue interaction requirements of this evaluation setting.
+          </p>
+        </div>
+
+        <div style="height: 30px;"></div>
+
+        <div class="content has-text-justified">
+          <div class="highlight-note">
+            <p>
+              <strong>Main conclusion.</strong> Current LLMs are strong at static medical knowledge and can be competitive with less experienced human GPs on selected open-ended case tasks,
+              but they remain clearly weaker than human general practitioners in realistic interactive consultation. The revised paper therefore concludes that
+              <strong>LLMs are not yet suitable for autonomous deployment in real-world general practice without human supervision.</strong>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{li2026gpbench,
+  title={Evaluating clinical competencies of large language models with a general practice benchmark},
+  author={Li, Zheqing and Yang, Yiying and Lang, Jiping and Jiang, Wenhao and Zhao, Yuhang and others},
+  journal={Nature Communications},
+  year={2026},
+  volume={17},
+  pages={1--16},
+  doi={10.1038/s41467-026-71622-6}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="./llm_gp_nc_revision_2_main_text_4.pdf">
+        <i class="fas fa-file-pdf"></i>
       </a>
-      <nav class="navlinks">
-        <a href="#problem">Problem</a>
-        <a href="#gpbench">GPBench</a>
-        <a href="#evaluation">Evaluation</a>
-        <a href="#results">Results</a>
-        <a href="#resources">Resources</a>
-      </nav>
+      <a class="icon-link" href="https://github.com/AIPrimaryCare/gpbench_code">
+        <i class="fab fa-github"></i>
+      </a>
     </div>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="wrap hero-grid">
-        <div class="hero-main">
-          <span class="eyebrow">General Practice Benchmark</span>
-          <h1>Evaluating clinical competencies of large language models as general practitioners.</h1>
-          <p class="sub">
-            GPBench is a competency-grounded benchmark designed to test whether large language models can support the real work
-            of general practice, from knowledge recall and diagnosis to treatment planning, health education, and patient interaction.
-          </p>
-          <div class="actions">
-            <a class="btn primary" href="./llm_gp_nc_revision_2_main_text_4.pdf">Main Paper</a>
-            <a class="btn ghost" href="./supplementary_information.pdf">Supplementary</a>
-            <a class="btn ghost" href="https://doi.org/10.1038/s41467-026-71622-6">Nature Article</a>
-          </div>
-          <div class="stats">
-            <div class="stat"><span>Evaluated LLMs</span><strong>10</strong></div>
-            <div class="stat"><span>Primary Indicators</span><strong>6</strong></div>
-            <div class="stat"><span>Secondary Indicators</span><strong>14</strong></div>
-          </div>
-        </div>
-        <aside class="hero-side">
-          <div class="mini"><b>Best MCQ model</b><p class="muted">DeepSeek-R1 reached 82.74 and exceeded all human groups on sampled MCQs.</p></div>
-          <div class="mini"><b>Best clinical case model</b><p class="muted">DeepSeek-R1 scored 81.80, roughly comparable to Group C human GPs.</p></div>
-          <div class="mini"><b>Best AI patient model</b><p class="muted">o1-preview scored 55.20, still below Group C human physicians at 61.30.</p></div>
-        </aside>
-      </div>
-    </section>
-
-    <section id="problem">
-      <div class="wrap">
-        <div class="head">
-          <small>Problem</small>
-          <h2>Why general practice needs a different benchmark.</h2>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
           <p>
-            Traditional medical LLM benchmarks focus heavily on exam-style question answering. That measures factual recall,
-            but it does not capture the broader competence required in general practice, where diagnosis, treatment decisions,
-            multimorbidity, communication, and history taking must work together.
+            This website is licensed under a <a rel="license"
+            href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
-        </div>
-        <div class="grid-3">
-          <article class="card">
-            <h3>Static knowledge is not enough</h3>
-            <p>Strong MCQ results can hide weak open-ended reasoning when models must explain, prioritize, and manage uncertainty.</p>
-          </article>
-          <article class="card">
-            <h3>General practice is holistic</h3>
-            <p>GP work is symptom-oriented, cross-system, and strongly shaped by referral judgment, prevention, and patient education.</p>
-          </article>
-          <article class="card">
-            <h3>Interaction changes the task</h3>
-            <p>History taking depends on asking the right follow-up questions, not only returning one polished final answer.</p>
-          </article>
-        </div>
-        <div class="flow">
-          <div class="step"><div class="num">01</div><div><h3>Benchmark the real clinical job</h3><p class="muted">GPBench is built around the day-to-day responsibilities of general practitioners.</p></div></div>
-          <div class="step"><div class="num">02</div><div><h3>Go beyond answer selection</h3><p class="muted">The framework adds real outpatient cases and simulated patient interaction.</p></div></div>
-          <div class="step"><div class="num">03</div><div><h3>Compare against human GPs</h3><p class="muted">Three human experience groups provide a clinically meaningful reference point.</p></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="gpbench">
-      <div class="wrap">
-        <div class="head">
-          <small>GPBench</small>
-          <h2>A competency model paired with three complementary test sets.</h2>
           <p>
-            GPBench combines a Delphi-designed competency framework with multiple evaluation formats built from open-source questions,
-            real outpatient records, and simulated AI patients.
+            This website is adapted from the <a
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies website template</a>.
           </p>
-        </div>
-        <div class="bench">
-          <div class="card">
-            <h3>Benchmark architecture</h3>
-            <div class="figure">
-              <div class="panel">
-                <h4>MCQ Test Set</h4>
-                <p class="muted">3,661 competency-tagged questions for foundational knowledge and theory.</p>
-              </div>
-              <div class="panel accent">
-                <h4>Clinical Case Test Set</h4>
-                <p class="muted">70 real outpatient cases for open-ended diagnosis, referral, treatment, and education.</p>
-              </div>
-              <div class="panel">
-                <h4>AI Patient Test Set</h4>
-                <p class="muted">70 simulated consultations for interactive history-taking evaluation.</p>
-              </div>
-            </div>
-            <div class="pillbar">
-              <span class="pill">8 major chronic diseases</span>
-              <span class="pill">10 common symptoms</span>
-              <span class="pill">Chinese prompts and scoring</span>
-              <span class="pill">Expert-reviewed annotations</span>
-            </div>
-
-            <h3 style="margin-top:20px;">Competency indicators</h3>
-            <div class="indicators">
-              <div class="mini"><b>I1. Basic Medical Knowledge</b><p class="muted">Weight 10%</p></div>
-              <div class="mini"><b>I2. Diagnosis</b><p class="muted">Weight 40%</p></div>
-              <div class="mini"><b>I3. Decision-making</b><p class="muted">Weight 30%</p></div>
-              <div class="mini"><b>I4. Health Management</b><p class="muted">Weight 10%</p></div>
-              <div class="mini"><b>I5. Health Economics</b><p class="muted">Weight 5%</p></div>
-              <div class="mini"><b>I6. Medical Ethics and Humanities</b><p class="muted">Weight 5%</p></div>
-            </div>
-          </div>
-
-          <div class="card">
-            <h3>Representative models</h3>
-            <p class="muted">The study evaluates general-purpose, reasoning-oriented, and medical-specialist models.</p>
-            <div class="models">
-              <div class="mini">GPT-4o</div>
-              <div class="mini">GPT-4-turbo</div>
-              <div class="mini">o1-preview</div>
-              <div class="mini">Gemini-1.5-pro</div>
-              <div class="mini">Qwen2.5-7B-Instruct</div>
-              <div class="mini">Qwen2.5-72B-Instruct</div>
-              <div class="mini">Claude-3.5-Sonnet</div>
-              <div class="mini">DeepSeek-V3</div>
-              <div class="mini">DeepSeek-R1</div>
-              <div class="mini">HuatuoGPT-o1-7B</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="evaluation">
-      <div class="wrap">
-        <div class="head">
-          <small>Evaluation</small>
-          <h2>How the benchmark scores models and human physicians.</h2>
-          <p>
-            MCQs are scored by accuracy, while clinical cases and AI-patient conversations are scored by expert general practitioners
-            using predefined rubrics. The paper also compares LLMs with three groups of human GPs.
-          </p>
-        </div>
-        <div class="grid-2">
-          <article class="card">
-            <h3>Three evaluation modes</h3>
-            <ul class="list">
-              <li><b>MCQ Test Set:</b> automatic accuracy over competency-tagged questions.</li>
-              <li><b>Clinical Case Test Set:</b> expert scoring of diagnosis, referral, treatment, and education.</li>
-              <li><b>AI Patient Test Set:</b> expert scoring of dialogue-based medical history taking.</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3>Human reference groups</h3>
-            <ul class="list">
-              <li><b>Group A:</b> 2 GPs with more than 10 years of experience.</li>
-              <li><b>Group B:</b> 2 GPs with 5-10 years of experience.</li>
-              <li><b>Group C:</b> 2 GPs with less than 5 years of experience.</li>
-            </ul>
-            <p class="muted" style="margin-top:12px;">Human MCQ evaluation used a 200-question stratified sample. All 70 clinical cases and all 70 AI-patient dialogues were scored for both humans and LLMs.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="results">
-      <div class="wrap">
-        <div class="head">
-          <small>Results</small>
-          <h2>10 representative LLMs were benchmarked against human general practitioners.</h2>
-          <p>
-            The overall pattern is clear: LLMs can outperform human physicians on static knowledge tasks, but they still
-            lag behind in realistic case reasoning and interactive patient interviewing.
-          </p>
-        </div>
-
-        <article class="scorebox">
-          <h3>MCQ Test Set</h3>
-          <p class="muted">Strongest on static knowledge. DeepSeek-R1 leads, followed by o1-preview and Qwen2.5-72B-Instruct.</p>
-          <div class="barlist">
-            <div class="row"><div>DeepSeek-R1</div><div class="track"><div class="fill" style="width:82.74%"></div></div><div class="value">82.74</div></div>
-            <div class="row"><div>o1-preview</div><div class="track"><div class="fill" style="width:79.16%"></div></div><div class="value">79.16</div></div>
-            <div class="row"><div>Qwen2.5-72B-Instruct</div><div class="track"><div class="fill" style="width:78.13%"></div></div><div class="value">78.13</div></div>
-            <div class="row"><div>Group C Human GPs</div><div class="track"><div class="fill human" style="width:68.32%"></div></div><div class="value">68.32</div></div>
-            <div class="row"><div>Group A Human GPs</div><div class="track"><div class="fill human" style="width:62.97%"></div></div><div class="value">62.97</div></div>
-          </div>
-        </article>
-
-        <div class="result-grid" style="margin-top:18px;">
-          <article class="scorebox">
-            <h3>Clinical Case Test Set</h3>
-            <p class="muted">Open-ended reasoning remains harder. DeepSeek-R1 approaches Group C humans but trails more experienced GPs.</p>
-            <div class="barlist">
-              <div class="row"><div>Group A Human GPs</div><div class="track"><div class="fill human" style="width:87.10%"></div></div><div class="value">87.10</div></div>
-              <div class="row"><div>Group B Human GPs</div><div class="track"><div class="fill human" style="width:85.77%"></div></div><div class="value">85.77</div></div>
-              <div class="row"><div>DeepSeek-R1</div><div class="track"><div class="fill" style="width:81.80%"></div></div><div class="value">81.80</div></div>
-              <div class="row"><div>Group C Human GPs</div><div class="track"><div class="fill human" style="width:81.16%"></div></div><div class="value">81.16</div></div>
-              <div class="row"><div>Gemini-1.5-pro</div><div class="track"><div class="fill" style="width:76.46%"></div></div><div class="value">76.46</div></div>
-              <div class="row"><div>GPT-4o</div><div class="track"><div class="fill" style="width:76.02%"></div></div><div class="value">76.02</div></div>
-            </div>
-          </article>
-
-          <article class="scorebox">
-            <h3>AI Patient Test Set</h3>
-            <p class="muted">Dialogue-based history taking shows the largest gap. Even the top model stays below Group C human physicians.</p>
-            <div class="barlist">
-              <div class="row"><div>Group A Human GPs</div><div class="track"><div class="fill human" style="width:77.75%"></div></div><div class="value">77.75</div></div>
-              <div class="row"><div>Group B Human GPs</div><div class="track"><div class="fill human" style="width:76.59%"></div></div><div class="value">76.59</div></div>
-              <div class="row"><div>Group C Human GPs</div><div class="track"><div class="fill human" style="width:61.30%"></div></div><div class="value">61.30</div></div>
-              <div class="row"><div>o1-preview</div><div class="track"><div class="fill" style="width:55.20%"></div></div><div class="value">55.20</div></div>
-              <div class="row"><div>Claude-3.5-Sonnet</div><div class="track"><div class="fill" style="width:53.67%"></div></div><div class="value">53.67</div></div>
-              <div class="row"><div>GPT-4o</div><div class="track"><div class="fill" style="width:51.09%"></div></div><div class="value">51.09</div></div>
-            </div>
-          </article>
-        </div>
-
-        <article class="callout" style="margin-top:18px;">
-          <h3>Main findings</h3>
-          <p class="muted">
-            LLMs are strongest on static medical knowledge and comparatively better at health education, but they still show clear weaknesses
-            in diagnostic chain construction, treatment decision-making, and interactive information gathering. The paper concludes that
-            current models are not ready for autonomous deployment in general practice and still require human supervision.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section id="resources">
-      <div class="wrap">
-        <div class="head">
-          <small>Resources</small>
-          <h2>Paper and project materials.</h2>
-          <p>Quick access to the manuscript, supplementary materials, and publication page.</p>
-        </div>
-        <div class="grid-2">
-          <article class="card">
-            <h3>Local files</h3>
-            <div class="pillbar">
-              <a class="pill" href="./llm_gp_nc_revision_2_main_text_4.pdf">Main paper PDF</a>
-              <a class="pill" href="./supplementary_information.pdf">Supplementary PDF</a>
-            </div>
-          </article>
-          <article class="card">
-            <h3>Online resources</h3>
-            <div class="pillbar">
-              <a class="pill" href="https://doi.org/10.1038/s41467-026-71622-6">Nature Communications</a>
-              <a class="pill" href="https://github.com/AIPrimaryCare">Project homepage</a>
-              <a class="pill" href="https://github.com/AIPrimaryCare/gpbench_code">Code repository</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="wrap">
-      <div class="footerbox">
-        <h3>GPBench</h3>
-        <p style="color:rgba(255,255,255,.72);margin-top:8px;">
-          A competency-grounded benchmark for evaluating whether large language models can support the real work of general practitioners.
-        </p>
-        <div class="actions">
-          <a class="btn" href="#problem">Problem</a>
-          <a class="btn" href="#gpbench">GPBench</a>
-          <a class="btn" href="#evaluation">Evaluation</a>
-          <a class="btn" href="#results">Results</a>
         </div>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
+
 </body>
 </html>
