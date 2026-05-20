@@ -833,23 +833,141 @@
             </table>
           </div>
         </div>
-
-        <div style="height: 30px;"></div>
-
-        <div class="content has-text-justified">
-          <div class="highlight-note">
-            <p>
-              <strong>Main conclusion.</strong> Current LLMs are strong at static medical knowledge and can be competitive with less experienced human GPs on selected open-ended case tasks,
-              but they remain clearly weaker than human general practitioners in realistic interactive consultation. The revised paper therefore concludes that
-              <strong>LLMs are not yet suitable for autonomous deployment in real-world general practice without human supervision.</strong>
-            </p>
-          </div>
         </div>
 
       </div>
     </div>
   </div>
 </section>
+
+<section class="section section-anchor" id="competency-analysis">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <h2 class="title is-2 has-text-centered">Competency Analysis</h2>
+
+        <div class="content has-text-justified">
+          <p class="description">
+            Beyond the aggregate scores, GPBench enables a competency-level interpretation of model behavior in general practice.
+            The results reveal a consistent pattern across the three evaluation settings: current LLMs are relatively strong in
+            <strong>static medical knowledge</strong> and certain forms of <strong>health education</strong>, but they remain substantially weaker in
+            <strong>open-ended diagnostic reasoning</strong>, <strong>treatment decision-making</strong>, and especially
+            <strong>interactive medical history taking</strong>. These findings suggest that high performance on traditional medical benchmarks
+            does not directly translate into readiness for real-world general practice.
+          </p>
+
+          <div class="columns is-multiline" style="margin-top: 1rem;">
+            <div class="column is-6">
+              <div class="soft-box">
+                <h4 class="title is-5">1. Basic Medical Knowledge</h4>
+                <p>
+                  LLMs generally perform strongly on the MCQ Test Set, indicating solid mastery of structured medical knowledge.
+                  Reasoning-oriented models such as <strong>DeepSeek-R1</strong> and <strong>o1-preview</strong> achieve the highest scores,
+                  suggesting that current frontier models can already exceed human GPs on static, exam-style knowledge assessment.
+                </p>
+                <p>
+                  However, this advantage is largely confined to constrained-answer settings and does not guarantee robust clinical judgment in realistic outpatient scenarios.
+                </p>
+              </div>
+            </div>
+
+            <div class="column is-6">
+              <div class="soft-box">
+                <h4 class="title is-5">2. Diagnosis</h4>
+                <p>
+                  In diagnosis-related competencies, LLMs show a clear drop when moving from MCQs to real clinical cases and interactive consultations.
+                  Although several models perform competitively in differential diagnosis under structured conditions, they frequently exhibit
+                  weaknesses in <strong>disease staging</strong>, <strong>complication recognition</strong>, and
+                  <strong>assessment of acute or critical conditions</strong>.
+                </p>
+                <p>
+                  The strongest model, <strong>DeepSeek-R1</strong>, narrows the gap with junior human GPs on clinical cases, but human physicians still maintain a clear advantage overall.
+                </p>
+              </div>
+            </div>
+
+            <div class="column is-6">
+              <div class="soft-box">
+                <h4 class="title is-5">3. Decision-making</h4>
+                <p>
+                  Treatment decision-making remains one of the most challenging competencies for current LLMs.
+                  Across models, the evaluation reveals recurring problems in
+                  <strong>treatment goal formulation</strong>,
+                  <strong>medication safety</strong>,
+                  <strong>contraindication awareness</strong>, and
+                  <strong>selection of appropriate non-pharmacological or alternative strategies</strong>.
+                </p>
+                <p>
+                  Even when the diagnosis is broadly correct, models often fail to provide sufficiently precise, safe, and clinically actionable treatment plans.
+                </p>
+              </div>
+            </div>
+
+            <div class="column is-6">
+              <div class="soft-box">
+                <h4 class="title is-5">4. Health Management</h4>
+                <p>
+                  LLMs often perform relatively well on <strong>health education delivery</strong>, especially in written responses.
+                  Their outputs are usually fluent, comprehensive, and easy to understand.
+                </p>
+                <p>
+                  Nevertheless, the analysis suggests that these recommendations are frequently too general and insufficiently tailored to the patient’s
+                  specific condition, risk profile, and long-term management needs. In practice, this limits their usefulness for real primary care support.
+                </p>
+              </div>
+            </div>
+
+            <div class="column is-6">
+              <div class="soft-box">
+                <h4 class="title is-5">5. Health Economics</h4>
+                <p>
+                  Cost-effective care coordination is only weakly reflected in current LLM outputs.
+                  Even when prompted explicitly, most models pay limited attention to resource allocation, care affordability,
+                  and the practical constraints of primary care delivery.
+                </p>
+                <p>
+                  This suggests that current LLMs still model medicine primarily as a diagnostic and therapeutic task,
+                  rather than as a broader system of coordinated, resource-aware patient care.
+                </p>
+              </div>
+            </div>
+
+            <div class="column is-6">
+              <div class="soft-box">
+                <h4 class="title is-5">6. Medical Ethics and Humanities</h4>
+                <p>
+                  Humanistic care and ethically grounded communication remain important weaknesses.
+                  While many models can produce polite and empathetic language, they still show risks of
+                  <strong>overdiagnosis</strong>, <strong>overtreatment</strong>, and <strong>misdiagnosis</strong>,
+                  especially when the task requires balancing uncertainty, safety, and patient-centered communication.
+                </p>
+                <p>
+                  This highlights that surface-level fluency should not be mistaken for mature clinical professionalism.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="highlight-note">
+            <p>
+              <strong>Key takeaway.</strong> GPBench shows that the main limitation of current LLMs is not simply insufficient medical knowledge,
+              but the gap between <strong>knowing medicine</strong> and <strong>practicing general medicine</strong>.
+              The models are strongest in structured knowledge recall, weaker in open-ended case reasoning, and weakest in dynamic outpatient interaction.
+              Therefore, although some LLMs already approach junior human performance on selected tasks, they are still not suitable for autonomous deployment in real-world general practice without human supervision.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
