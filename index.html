@@ -180,63 +180,22 @@
             </div>
             <div class="column is-3">
               <div class="metric-card">
+                <div class="heading">MCQ Questions</div>
+                <div class="value">3,661</div>
+              </div>
+            </div>
+            <div class="column is-3">
+              <div class="metric-card">
                 <div class="heading">Clinical Cases</div>
                 <div class="value">70</div>
               </div>
             </div>
             <div class="column is-3">
               <div class="metric-card">
-                <div class="heading">AI Patient Dialogues</div>
+                <div class="heading">AI Patient</div>
                 <div class="value">70</div>
               </div>
             </div>
-            <div class="column is-3">
-              <div class="metric-card">
-                <div class="heading">MCQ Questions</div>
-                <div class="value">3,661</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="hero overview section-anchor" id="problem">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <h2 class="title is-2 has-text-centered">Problem</h2>
-      <p class="description">
-        Large language models have shown promising performance in medical question answering, yet most existing evaluations remain heavily centered on exam-style benchmarks.
-        This is not enough for general practice. The daily work of general practitioners requires broad clinical knowledge, open-ended diagnostic reasoning,
-        longitudinal health management, referral judgment, patient education, and interactive history taking. A model that performs well on multiple-choice questions
-        may still fail in realistic outpatient scenarios where incomplete information, multimorbidity, and communication are central.
-      </p>
-      <p class="description">
-        To address this gap, the revised GPBench paper asks a more practical question: <strong>how close are current LLMs to the real competencies of human general practitioners?</strong>
-        Rather than evaluating only static knowledge, GPBench examines whether models can handle open-ended clinical cases and simulated doctor-patient interactions, and compares their performance directly
-        with human GPs at different experience levels.
-      </p>
-
-      <div class="columns is-centered" style="margin-top: 1.5rem;">
-        <div class="column">
-          <div class="soft-box">
-            <h4 class="title is-5">Beyond exam-style accuracy</h4>
-            <p>Strong factual recall does not guarantee safe or complete reasoning in real-world primary care workflows.</p>
-          </div>
-        </div>
-        <div class="column">
-          <div class="soft-box">
-            <h4 class="title is-5">General practice is holistic</h4>
-            <p>GP work spans diagnosis, treatment, prevention, referral, communication, and long-term management.</p>
-          </div>
-        </div>
-        <div class="column">
-          <div class="soft-box">
-            <h4 class="title is-5">Interaction matters</h4>
-            <p>History taking and outpatient decision-making require dynamic questioning rather than one-shot answer generation.</p>
           </div>
         </div>
       </div>
@@ -251,13 +210,12 @@
         <h2 class="title is-2 has-text-centered">GPBench</h2>
         <div class="content has-text-justified">
           <p class="description">
-            GPBench is a competency-grounded benchmark designed specifically for general practice. It integrates a general practice competency model with three complementary evaluation settings:
-            the <strong>MCQ Test Set</strong> for foundational knowledge, the <strong>Clinical Case Test Set</strong> for open-ended reasoning on real outpatient cases, and the
-            <strong>AI Patient Test Set</strong> for interactive history taking through simulated consultations.
+            GPBench is a competency-based evaluation framework for assessing the capability of Large Language Models (LLMs) to function as general practitioners.
+            Existing medical benchmarks primarily rely on exam-style questions or simplified question-answering formats, which lack a competency-based structure aligned with the real-world clinical responsibilities of general practitioners. GPBench addresses this gap by introducing a general practice competency model and an expert-annotated evaluation dataset constructed according to routine clinical practice standards.
           </p>
           <p class="description">
-            The benchmark is built from open-source questions and de-identified outpatient medical records, and covers eight major chronic diseases and ten common symptoms encountered in general practice.
-            Expert clinicians established the ground truth and scoring rubrics. The revised study emphasizes that benchmarking should mirror the actual responsibilities of general practitioners rather than only exam performance.
+            The competency model covers <b>six primary indicators</b> with <b>fourteen secondary indicators</b> specifying measurable capabilities under each primary indicator.
+            The evaluation dataset consists of three test sets: the <b>Multiple-choice Question (MCQ) Test Set</b>, the <b>Clinical Case Test Set</b> , and the <b>AI Patient Test Set</b>.
           </p>
 
           <div style="height: 20px;"></div>
@@ -266,19 +224,19 @@
             <div class="column">
               <div class="soft-box">
                 <h4 class="title is-5">MCQ Test Set</h4>
-                <p>3,661 competency-tagged multiple-choice questions for evaluating foundational medical knowledge and theory.</p>
+                <p>3,661 competency-tagged multiple-choice questions for evaluating foundational medical knowledge and theoretical understanding.</p>
               </div>
             </div>
             <div class="column">
               <div class="soft-box">
                 <h4 class="title is-5">Clinical Case Test Set</h4>
-                <p>70 real outpatient cases scored for diagnosis, referral, treatment planning, and health education.</p>
+                <p>70 real-world outpatient records scored for diagnosis, treatment plan, and health education, covering eight common chronic diseases and ten frequent clinical symptoms.</p>
               </div>
             </div>
             <div class="column">
               <div class="soft-box">
                 <h4 class="title is-5">AI Patient Test Set</h4>
-                <p>70 simulated consultations assessing interactive medical history taking and downstream clinical decisions.</p>
+                <p>70 simulated "AI Patient" agents assessing interactive medical history taking.</p>
               </div>
             </div>
           </div>
@@ -297,8 +255,9 @@
           <figure>
             <img id="overview" src="./static/images/fig1_overview_of_gpbench.png" alt="overview" style="height: 100%;">
             <figcaption style="text-align: justify;">
-              <strong>Overview of GPBench.</strong> The benchmark combines competency-grounded evaluation with three testing formats:
-              objective MCQs, open-ended clinical cases, and interactive AI-patient consultations, enabling a more realistic assessment of LLM performance in general practice.
+              <strong>Overview of GPBench.</strong> GPBench comprises a competency model and an evaluation dataset. The competency model delineates six primary indicators and fourteen secondary indicators, capturing the core competencies essential for routine general practice.
+              Based on the competency model, we collected data from open-source datasets and real outpatient medical records from Tertiary A-grade hospitals to create an evaluation dataset, which contains three parts: the Multiple-choice Question (MCQ) Test Set,  Clinical Case Test Set, and  Artificial Intelligence (AI) Patient Test Set.
+              Ground truth and scoring criteria for each case were annotated in detail by experts. Accuracy is used as the evaluation metric for the MCQ Test Set, while for the other two test sets, a three-member general practitioner panel grades responses based on the annotated scoring criteria.
             </figcaption>
           </figure>
         </div>
