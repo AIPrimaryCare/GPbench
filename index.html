@@ -161,6 +161,24 @@
     border-top: 1px solid #bbb;
   }
 </style>
+
+<style>
+  .scroll-table-box {
+    width: 100%;
+    max-width: 100%;
+    height: 620px;
+    overflow: auto;
+    background: #fff;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+  }
+
+  .scroll-table-box.case-table {
+    height: 420px;
+  }
+</style>
+
+
 </head>
 <body>
 
@@ -645,7 +663,7 @@
             The performance (scores) of LLMs on the <strong>Clinical Case Test Set</strong>.
           </p>
         
-          <div class="scroll-table-box">
+          <div class="scroll-table-box case-table">
             <table style="min-width: 1250px;">
               <thead>
                 <tr>
@@ -774,6 +792,12 @@
               </tbody>
             </table>
           </div>
+          <div style="height: 16px;"></div>
+            <p style="text-align: justify;">
+              <strong>Note.</strong> Eight common chronic diseases and ten frequent clinical symptoms were selected for case construction. For each disease or symptom category, 3--4 representative cases with varying difficulty levels were included to ensure broad coverage of typical general practice scenarios. As a result, the cases were distinct from one another, and LLMs were expected to exhibit heterogeneous performance across cases.
+            </p>
+
+
         </div>
 
 
@@ -804,15 +828,10 @@
                 <tr><td><strong>Qwen2.5-7B-Instruct</strong></td><td>40.22</td></tr>
                 <tr><td><strong>DeepSeek-V3</strong></td><td>39.89</td></tr>
                 <tr><td><strong>HuatuoGPT-o1-7B</strong></td><td>36.87</td></tr>
-                <tr><td><strong>DeepSeek-R1</strong></td><td>Excluded</td></tr>
+                <tr><td><strong>DeepSeek-R1</strong></td><td>-</td></tr>
               </tbody>
             </table>
           </div>
-          <div style="height: 20px;"></div>
-          <p style="text-align: justify;">
-            <strong>Note.</strong> DeepSeek-R1 was excluded from the AI Patient Test Set because, as a reasoning-oriented model,
-            it frequently failed to satisfy the dialogue interaction requirements of this evaluation setting.
-          </p>
         </div>
 
         <div style="height: 30px;"></div>
