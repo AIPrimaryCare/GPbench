@@ -869,14 +869,14 @@
                 <h4 class="title is-5">1. Diagnostic Deficiencies</h4>
                 <p>
                   LLMs frequently failed to construct complete diagnostic reasoning chains, especially when cases
-                  required disease classification, multi-system assessment, or recognition of uncommon presentations.
+                  required disease classification, multi-system assessment, or rare diseases recognition.
                 </p>
                 <ul>
                   <li>Lack of accurate disease grading, staging, and risk stratification.</li>
-                  <li>Hallucinated disease grading or staging unsupported by clinical guidelines.</li>
-                  <li>Blind spots in identifying comorbidities and complications.</li>
-                  <li>Insufficient recognition of acute and critical conditions.</li>
-                  <li>Limited ability to diagnose rare diseases.</li>
+                  <li>Hallucination on disease grading, staging, and risk stratification.</li>
+                  <li>Blind spots in identification of comorbidities and complications.</li>
+                  <li>Deficiency in acute and critical condition assessment.</li>
+                  <li>Lack of accurate diagnosis for rare diseases.</li>
                 </ul>
               </div>
             </div>
@@ -884,16 +884,16 @@
             <!-- Card 2 -->
             <div class="column is-6">
               <div class="soft-box" style="height: 100%;">
-                <h4 class="title is-5">2. Treatment Decision-making Deficiencies</h4>
+                <h4 class="title is-5">Treatment Decision-making Deficiencies</h4>
                 <p>
                   Treatment planning remained a major weakness. Even when models produced broadly correct diagnoses,
                   their management plans were often incomplete, unsafe, or insufficiently actionable for clinical use.
                 </p>
                 <ul>
                   <li>Lack of clear treatment goals, such as blood pressure or glucose control targets.</li>
-                  <li>Pharmacotherapy risks, including omission of core drugs and unsafe medication choices.</li>
+                  <li><strong>Pharmacotherapy Risks</strong></li>
                   <li>Blind spots in non-pharmacological interventions, such as dialysis, surgery, or interventional therapy.</li>
-                  <li>Insufficient standardization in acute and critical illness management.</li>
+                  <li>Insufficient standardization in critical illness management.</li>
                 </ul>
               </div>
             </div>
@@ -901,17 +901,17 @@
             <!-- Card 3 -->
             <div class="column is-6">
               <div class="soft-box" style="height: 100%;">
-                <h4 class="title is-5">3. Pharmacotherapy Safety Risks</h4>
+                <h4 class="title is-5">Pharmacotherapy Risks</h4>
                 <p>
                   Medication-related errors were a particularly important source of clinical risk. These problems suggest
                   that current LLMs do not yet reliably account for patient-specific conditions, disease stages, or drug
                   safety constraints.
                 </p>
                 <ul>
-                  <li>Omission of core drugs required for specific diseases.</li>
+                  <li>Omission of core drugs.</li>
                   <li>Neglect of drug interaction contraindications.</li>
-                  <li>Missing or incorrect drug dosage guidance.</li>
-                  <li>Improper control of medication indications, especially in patients with comorbid conditions.</li>
+                  <li>Lack of drug dosage guidance.</li>
+                  <li>Improper control of medication indications.</li>
                 </ul>
               </div>
             </div>
@@ -920,15 +920,10 @@
             <div class="column is-6">
               <div class="soft-box" style="height: 100%;">
                 <h4 class="title is-5">4. Health Management and Ethical Risks</h4>
-                <p>
-                  Although LLMs often generated fluent health education advice, their recommendations were frequently
-                  principle-based rather than concrete, individualized, and clinically actionable.
-                </p>
                 <ul>
-                  <li>Health education advice was often too general and lacked practical guidance.</li>
-                  <li>Models showed limited awareness of broader care responsibilities beyond diagnosis and treatment.</li>
-                  <li>Ethical risks mainly appeared as overtreatment, misdiagnosis, or missed diagnosis.</li>
-                  <li>Surface-level fluency did not necessarily reflect reliable clinical professionalism.</li>
+                  <li>Health education was often too general and lacked practical guidance.</li>
+                  <li>Ethical risks mainly appeared as an over-treatment tendency and an
+                    increased risk of misdiagnosis or missed diagnosis.</li>
                 </ul>
               </div>
             </div>
