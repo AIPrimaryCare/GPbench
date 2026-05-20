@@ -96,15 +96,17 @@
     table td, table th {
       vertical-align: top;
     }
+  </style>
 
+<style>
   .scroll-table-box {
     width: 100%;
     max-width: 100%;
     height: 620px;
     overflow: auto;
-    border: 1.5px solid #222;
-    border-radius: 6px;
     background: #fff;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
   }
 
   .scroll-table-box table {
@@ -116,7 +118,7 @@
 
   .scroll-table-box th,
   .scroll-table-box td {
-    border: 1px solid #999;
+    border: none;
     padding: 0.65rem 0.75rem;
     vertical-align: top;
     text-align: center;
@@ -156,10 +158,9 @@
 
   .top-divider td,
   .top-divider th {
-    border-top: 2px solid #000 !important;
+    border-top: 1px solid #bbb;
   }
-
-  </style>
+</style>
 </head>
 <body>
 
@@ -443,7 +444,6 @@
               <thead>
                 <tr style="border-bottom: 2px solid black;">
                   <th>Human Physicians / Models</th>
-                  <th>Human Physicians / Models</th>
                   <th>MCQ Test Set<br>(accuracy %)</th>
                   <th>Clinical Case Test Set<br>(score)</th>
                   <th>AI Patient Test Set<br>(score)</th>
@@ -640,41 +640,145 @@
         
         </div>
 
-
-
-
-        <div style="height: 30px;"></div>
-
         <div class="content has-text-centered">
           <p style="font-size: 1.25rem;">
-            Representative model scores on the <strong>Clinical Case Test Set</strong>.
+            The performance (scores) of LLMs on the <strong>Clinical Case Test Set</strong>.
           </p>
-          <div class="table-wrap">
-            <table style="width: 100%; white-space: nowrap;">
+        
+          <div class="scroll-table-box">
+            <table style="min-width: 1250px;">
               <thead>
                 <tr>
-                  <th>Model / Human Group</th>
-                  <th>Overall Score</th>
+                  <th class="left-sticky" style="min-width: 190px;">Model</th>
+                  <th>Diagnosis and Differential Diagnosis (I2-1)</th>
+                  <th>Complication Identification (I2-3)</th>
+                  <th>Acute and Critical Condition Recognition (I2-4)</th>
+                  <th>Referral Decision-making (I2-5)</th>
+                  <th>Formulation of Optimal Treatment Plan (I3-1)</th>
+                  <th>Health Education Delivery (I4-1)</th>
+                  <th>Weighted Average</th>
+                  <th>STD</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td><strong>Group A Human GPs</strong></td><td>87.10</td></tr>
-                <tr><td><strong>Group B Human GPs</strong></td><td>85.77</td></tr>
-                <tr><td><strong>DeepSeek-R1</strong></td><td>81.80</td></tr>
-                <tr><td><strong>Group C Human GPs</strong></td><td>81.16</td></tr>
-                <tr><td><strong>Gemini-1.5-pro</strong></td><td>76.46</td></tr>
-                <tr><td><strong>GPT-4o</strong></td><td>76.02</td></tr>
-                <tr><td><strong>Claude-3.5-Sonnet</strong></td><td>74.34</td></tr>
-                <tr><td><strong>o1-preview</strong></td><td>73.17</td></tr>
-                <tr><td><strong>Qwen2.5-72B-Instruct</strong></td><td>72.52</td></tr>
-                <tr><td><strong>DeepSeek-V3</strong></td><td>69.21</td></tr>
-                <tr><td><strong>GPT-4-turbo</strong></td><td>69.05</td></tr>
-                <tr><td><strong>HuatuoGPT-o1-7B</strong></td><td>65.25</td></tr>
-                <tr><td><strong>Qwen2.5-7B-Instruct</strong></td><td>64.46</td></tr>
+                <tr>
+                  <td class="left-sticky"><strong>Qwen2.5-7B-Instruct</strong></td>
+                  <td>63.36</td>
+                  <td>62.00</td>
+                  <td>80.86</td>
+                  <td>75.71</td>
+                  <td>56.60</td>
+                  <td>82.07</td>
+                  <td>68.63</td>
+                  <td>16.26</td>
+                </tr>
+                <tr>
+                  <td class="left-sticky"><strong>Qwen2.5-72B-Instruct</strong></td>
+                  <td>67.57</td>
+                  <td>60.36</td>
+                  <td>88.14</td>
+                  <td>74.14</td>
+                  <td>66.43</td>
+                  <td>87.71</td>
+                  <td>72.79</td>
+                  <td>17.18</td>
+                </tr>
+                <tr>
+                  <td class="left-sticky"><strong>GPT-4o</strong></td>
+                  <td>70.71</td>
+                  <td>73.79</td>
+                  <td>87.14</td>
+                  <td>81.43</td>
+                  <td>64.81</td>
+                  <td>85.21</td>
+                  <td>76.02</td>
+                  <td>19.29</td>
+                </tr>
+                <tr>
+                  <td class="left-sticky"><strong>GPT-4-turbo</strong></td>
+                  <td>62.13</td>
+                  <td>67.29</td>
+                  <td>83.71</td>
+                  <td>78.86</td>
+                  <td>60.11</td>
+                  <td>81.71</td>
+                  <td>71.07</td>
+                  <td>20.13</td>
+                </tr>
+                <tr>
+                  <td class="left-sticky"><strong>Claude-3.5-Sonnet</strong></td>
+                  <td>69.21</td>
+                  <td>73.00</td>
+                  <td>85.00</td>
+                  <td>77.57</td>
+                  <td>62.06</td>
+                  <td>79.50</td>
+                  <td>73.42</td>
+                  <td>18.33</td>
+                </tr>
+                <tr>
+                  <td class="left-sticky"><strong>Gemini-1.5-pro</strong></td>
+                  <td>76.36</td>
+                  <td>72.57</td>
+                  <td>85.00</td>
+                  <td>78.86</td>
+                  <td>65.93</td>
+                  <td>87.43</td>
+                  <td>76.46</td>
+                  <td>20.14</td>
+                </tr>
+                <tr>
+                  <td class="left-sticky"><strong>DeepSeek-V3</strong></td>
+                  <td>63.14</td>
+                  <td>69.29</td>
+                  <td>83.57</td>
+                  <td>74.00</td>
+                  <td>59.79</td>
+                  <td>84.00</td>
+                  <td>70.90</td>
+                  <td>21.93</td>
+                </tr>
+                <tr>
+                  <td class="left-sticky"><strong>DeepSeek-R1</strong></td>
+                  <td>78.93</td>
+                  <td>76.57</td>
+                  <td>94.29</td>
+                  <td>79.84</td>
+                  <td>77.04</td>
+                  <td>87.93</td>
+                  <td>81.80</td>
+                  <td>16.92</td>
+                </tr>
+                <tr>
+                  <td class="left-sticky"><strong>HuatuoGPT-o1-7B</strong></td>
+                  <td>52.79</td>
+                  <td>70.29</td>
+                  <td>87.86</td>
+                  <td>72.14</td>
+                  <td>60.00</td>
+                  <td>89.43</td>
+                  <td>70.35</td>
+                  <td>19.88</td>
+                </tr>
+                <tr class="group-divider">
+                  <td class="left-sticky"><strong>o1-preview</strong></td>
+                  <td>67.64</td>
+                  <td>68.86</td>
+                  <td>85.71</td>
+                  <td>85.29</td>
+                  <td>61.09</td>
+                  <td>85.00</td>
+                  <td>74.24</td>
+                  <td>20.26</td>
+                </tr>
               </tbody>
             </table>
           </div>
         </div>
+
+
+
+
 
         <div style="height: 30px;"></div>
 
@@ -686,14 +790,11 @@
             <table style="width: 100%; white-space: nowrap;">
               <thead>
                 <tr>
-                  <th>Model / Human Group</th>
-                  <th>Overall Score</th>
+                  <th>Model</th>
+                  <th>Medical History Taking</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td><strong>Group A Human GPs</strong></td><td>77.75</td></tr>
-                <tr><td><strong>Group B Human GPs</strong></td><td>76.59</td></tr>
-                <tr><td><strong>Group C Human GPs</strong></td><td>61.30</td></tr>
                 <tr><td><strong>o1-preview</strong></td><td>55.20</td></tr>
                 <tr><td><strong>Claude-3.5-Sonnet</strong></td><td>53.67</td></tr>
                 <tr><td><strong>GPT-4o</strong></td><td>51.09</td></tr>
@@ -734,15 +835,15 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{li2026gpbench,
-  title={Evaluating clinical competencies of large language models with a general practice benchmark},
-  author={Li, Zheqing and Yang, Yiying and Lang, Jiping and Jiang, Wenhao and Zhao, Yuhang and others},
-  journal={Nature Communications},
-  year={2026},
-  volume={17},
-  pages={1--16},
-  doi={10.1038/s41467-026-71622-6}
-}</code></pre>
+    <pre><code>
+      @article{li2026evaluating,
+        title={Evaluating clinical competencies of large language models with a general practice benchmark},
+        author={Li, Zheqing and Yang, Yiying and Lang, Jiping and Jiang, Wenhao and Chen, Junrong and Zhao, Yuhang and Li, Shuang and Wang, Dingqian and Lin, Zhu and Li, Xuanna and others},
+        journal={Nature Communications},
+        year={2026},
+        publisher={Nature Publishing Group UK London}
+      }
+</code></pre>
   </div>
 </section>
 
