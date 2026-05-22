@@ -1,1 +1,3 @@
 GPBench: The first LLM-based medical evaluation framework focused on assessing the general practice competence of primary care physicians. Jointly released by the Sixth Affiliated Hospital of Sun Yat-sen University, the Xinyi People's Hospital, and the Guangming Laboratory.
+
+HomePage: https://aiprimarycare.github.io/GPbench/
